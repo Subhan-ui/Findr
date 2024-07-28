@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "706268431038",
+    "project_id": "findr-e94dd",
+    "storage_bucket": "findr-e94dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706268431038:android:4e26b238e0163214f094ef",
+        "android_client_info": {
+          "package_name": "com.findr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706268431038-qm4hbilpeehnv0i1dbdlk90avqsvqutl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.findr",
+            "certificate_hash": "2f881fe371d490cf6eafb9aa3f07dfcbc2f2a445"
+          }
+        },
+        {
+          "client_id": "706268431038-su47dvmsbpu9lmhduibph9v5995lf25o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh14AGrskBQdklPn3vb5YeNp0uzzD_85g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706268431038-su47dvmsbpu9lmhduibph9v5995lf25o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
