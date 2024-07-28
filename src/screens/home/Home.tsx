@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  SafeAreaView,
-} from 'react-native';
+import {View, Text, Image, ScrollView, SafeAreaView} from 'react-native';
 import Logo from '../../components/logo/Logo';
 import Card from '../../components/cards/Card';
 import Navbar from '../../components/navbar/Navbar';

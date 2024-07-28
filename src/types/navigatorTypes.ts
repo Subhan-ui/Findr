@@ -1,6 +1,6 @@
 export type navigatorTypes = {
   Home: undefined;
-  SpashScreen: undefined;
+  SplashScreen: undefined;
   Login: undefined;
   Register: undefined;
   Edit: undefined;

@@ -1,4 +1,10 @@
-import {View, Text, Image, KeyboardAvoidingView} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  KeyboardAvoidingView,
+  ToastAndroid,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/Feather';
@@ -7,12 +13,28 @@ import EmailButton from '../../components/ui/emailButton/EmailButton';
 import Button from '../../components/ui/button/Button';
 import useTypeNavigation from '../../hooks/useTypeNavigation';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import {handleChangeName, selectName} from '../../store/features/loginSlice';
+import {
+  handleChangeName,
+  handleUserNull,
+  selectName,
+  selectUser,
+} from '../../store/features/loginSlice';
+import auth from '@react-native-firebase/auth';
 
 const EditProfile = () => {
   const navigation = useTypeNavigation();
   const name = useAppSelector(selectName);
+  const user = useAppSelector(selectUser)
   const dispatch = useAppDispatch();
+  
+  const signOut = () => {
+    auth()
+      .signOut()
+      .then(() => {
+        ToastAndroid.show('User Signed Out', ToastAndroid.LONG);
+        dispatch(handleUserNull())
+      });
+  };
   return (
     <>
       <KeyboardAvoidingView style={{height: 812}}>
@@ -41,23 +63,25 @@ const EditProfile = () => {
             Edit Profile
           </Text>
           <Icon1
-            onPress={() => navigation.navigate('Login')}
+            onPress={signOut}
             name="exit"
             size={24}
             color="black"
           />
         </View>
         <View style={{marginTop: 16, display: 'flex', alignItems: 'center'}}>
-          <Image
-            source={require('../../assets/icons/images/person.png')}
-            style={{
-              width: 125,
-              height: 125,
-              borderRadius: 62,
-              marginTop: 24,
-              marginBottom: 16,
-            }}
-          />
+          {user?.photoURL && (
+            <Image
+              src={user?.photoURL}
+              style={{
+                width: 125,
+                height: 125,
+                borderRadius: 62,
+                marginTop: 24,
+                marginBottom: 16,
+              }}
+            />
+          )} 
           <View
             style={{
               width: 30,
@@ -90,7 +114,7 @@ const EditProfile = () => {
             bottom: 16,
             width: '83%',
           }}>
-          <Button>Save Changes</Button>
+          <Button>Save Changes </Button>
         </View>
       </KeyboardAvoidingView>
     </>

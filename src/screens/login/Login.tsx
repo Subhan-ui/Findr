@@ -1,13 +1,65 @@
-import {Image, Text, View} from 'react-native';
+import {Image, Text, ToastAndroid, View} from 'react-native';
 import Logo from '../../components/logo/Logo';
 import EmailButton from '../../components/ui/emailButton/EmailButton';
 import PasswordInput from '../../components/ui/passwordInput/PasswordInput';
 import Button from '../../components/ui/button/Button';
 import Link from 'react-native-vector-icons/FontAwesome';
 import useTypeNavigation from '../../hooks/useTypeNavigation';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
+import {useEffect} from 'react';
+import {useAppSelector} from '../../store/hooks';
+import {selectEmail, selectPassword} from '../../store/features/loginSlice';
 
 const Login = () => {
   const navigation = useTypeNavigation();
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '706268431038-su47dvmsbpu9lmhduibph9v5995lf25o.apps.googleusercontent.com',
+    });
+  }, []);
+  const email = useAppSelector(selectEmail);
+  const password = useAppSelector(selectPassword);
+  const onEmailSignIn = () => {
+    if (email.length > 0 && password.length > 0) {
+      auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          ToastAndroid.show('Signed in!', ToastAndroid.LONG);
+        })
+        .catch(error => {
+          if (error.code === 'auth/email-already-in-use') {
+            ToastAndroid.show(
+              'That email address is already in use!',
+              ToastAndroid.LONG,
+            );
+          }
+
+          if (error.code === 'auth/invalid-email') {
+            ToastAndroid.show(
+              'That email address is invalid!',
+              ToastAndroid.LONG,
+            );
+          }
+
+          ToastAndroid.show(error.message, ToastAndroid.LONG);
+        });
+    } else {
+      ToastAndroid.show('Enter Email or password correctly', ToastAndroid.LONG);
+    }
+  };
+
+  async function onGoogleButtonPress() {
+    await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+    const userInfo = await GoogleSignin.signIn();
+    console.log(userInfo);
+    const googleCredential = auth.GoogleAuthProvider.credential(
+      userInfo.idToken,
+    );
+    return auth().signInWithCredential(googleCredential);
+  }
+
   return (
     <>
       <View
@@ -37,7 +89,7 @@ const Login = () => {
         <EmailButton />
         <PasswordInput />
         <View style={{marginTop: 34}}>
-          <Button onPress={() => navigation.navigate('Home')}>Log in</Button>
+          <Button onPress={() => onEmailSignIn()}>Log in</Button>
         </View>
         <View
           style={{
@@ -111,7 +163,22 @@ const Login = () => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Link name="google" size={34} color="red" />
+            <Link
+              onPress={() =>
+                onGoogleButtonPress()
+                  .then(() => {
+                    ToastAndroid.show('User Singed in', ToastAndroid.LONG);
+                    // navigation.navigate('Home');
+                  })
+                  .catch(error => {
+                    console.log(error);
+                    ToastAndroid.show(error + '', ToastAndroid.LONG);
+                  })
+              }
+              name="google"
+              size={34}
+              color="red"
+            />
           </View>
         </View>
         <View

@@ -1,5 +1,12 @@
 import {useState} from 'react';
-import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  ToastAndroid,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Button from '../ui/button/Button';
@@ -8,7 +15,13 @@ import PasswordInput from '../ui/passwordInput/PasswordInput';
 import useTypeNavigation from '../../hooks/useTypeNavigation';
 import TextInputs from '../ui/textInput/TextInput';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import {handleChangeName, selectName} from '../../store/features/loginSlice';
+import auth from '@react-native-firebase/auth';
+import {
+  selectEmail,
+  selectName,
+  selectPassword,
+  handleChangeName,
+} from '../../store/features/loginSlice';
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -42,6 +55,40 @@ const RegistrationForm = () => {
   const name = useAppSelector(selectName);
   const dispatch = useAppDispatch();
   const navigation = useTypeNavigation();
+  const email = useAppSelector(selectEmail);
+  const password = useAppSelector(selectPassword);
+  const onEmailSignUp = () => {
+    if (email.length > 0 && password.length > 0 && name.length > 0) {
+      auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          ToastAndroid.show(
+            'User account created & signed in!',
+            ToastAndroid.LONG,
+          );
+          navigation.navigate('Home');
+        })
+        .catch(error => {
+          if (error.code === 'auth/email-already-in-use') {
+            ToastAndroid.show(
+              'That email address is already in use!',
+              ToastAndroid.LONG,
+            );
+          }
+
+          if (error.code === 'auth/invalid-email') {
+            ToastAndroid.show(
+              'That email address is invalid!',
+              ToastAndroid.LONG,
+            );
+          }
+
+          ToastAndroid.show(error.message, ToastAndroid.LONG);
+        });
+    } else {
+      ToastAndroid.show('Enter Email or password correctly', ToastAndroid.LONG);
+    }
+  };
   return (
     <SafeAreaView style={styles.safeArea}>
       <TextInputs
@@ -87,7 +134,7 @@ const RegistrationForm = () => {
           </Text>
         </View>
       </View>
-      <Button onPress={() => navigation.navigate('Home')}>Next</Button>
+      <Button onPress={() => onEmailSignUp()}>Next</Button>
       <View style={{marginTop: 31, display: 'flex', alignItems: 'center'}}>
         <Text
           style={{
