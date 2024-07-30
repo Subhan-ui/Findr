@@ -2,8 +2,10 @@ import {Image, Text, View} from 'react-native';
 import EmailButton from '../../components/ui/emailButton/EmailButton';
 import Button from '../../components/ui/button/Button';
 import TopBar from '../../components/topBar/TopBar';
+import usePassword from '../../hooks/forgotPassword/usePassword';
 
 const ForgotPassword = () => {
+  const {handleForgotPassword} = usePassword();
   return (
     <View style={{marginHorizontal: 33}}>
       <View
@@ -38,7 +40,7 @@ const ForgotPassword = () => {
       </View>
       <EmailButton />
       <View style={{marginTop: 10}}>
-        <Button>Send Reset Code</Button>
+        <Button onPress={() => handleForgotPassword()}>Send Reset Code</Button>
       </View>
     </View>
   );

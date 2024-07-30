@@ -3,14 +3,16 @@ import {Pressable, StyleSheet, Text} from 'react-native';
 const Button = ({
   children,
   onPress,
+  loading,
 }: {
-  children: string;
+  children: string | string[];
   onPress?: () => void;
+  loading?: boolean;
 }) => {
   const styles = StyleSheet.create({
     view: {
       width: '100%',
-      backgroundColor: '#5B59FE',
+      backgroundColor: loading ? '#5b59feb5' : '#5B59FE',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -28,7 +30,7 @@ const Button = ({
     },
   });
   return (
-    <Pressable onPress={onPress} style={styles.view}>
+    <Pressable onPress={onPress} style={styles.view} disabled={loading}>
       <Text style={styles.text}>{children}</Text>
     </Pressable>
   );

@@ -30,22 +30,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const Registration = () => {
-  return (
-    <>
-      <View style={styles.imageView}>
-        <Image
-          style={styles.image}
-          source={require('../../assets/icons/patterns/registration.png')}
-        />
-      </View>
-      <View style={styles.textWrap}>
-        <Text style={styles.text}>Findr</Text>
-        <Text style={styles.secText}>Join the Search for Hope</Text>
-      </View>
-      <RegistrationForm />
-    </>
-  );
-};
+const Registration = () => (
+  <>
+    <View style={styles.imageView}>
+      <Image
+        style={styles.image}
+        source={require('../../assets/icons/patterns/registration.png')}
+      />
+    </View>
+    <View style={styles.textWrap}>
+      <Text style={styles.text}>Findr</Text>
+      <Text style={styles.secText}>Join the Search for Hope</Text>
+    </View>
+    <RegistrationForm />
+  </>
+);
 
 export default Registration;

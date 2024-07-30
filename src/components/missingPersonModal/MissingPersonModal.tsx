@@ -135,7 +135,8 @@ const MissingPersonModal = ({
                 style={{
                   color: '#5b59fe',
                   fontFamily: 'Montserrat',
-                  fontWeight: '500',
+                  fontWeight: '700',
+                  fontSize:11
                 }}>
                 Contact via Email
               </Text>
@@ -154,7 +155,8 @@ const MissingPersonModal = ({
                 style={{
                   color: 'white',
                   fontFamily: 'Montserrat',
-                  fontWeight: '500',
+                  fontWeight: '700',
+                  fontSize:11
                 }}>
                 Report Found
               </Text>

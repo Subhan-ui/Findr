@@ -68,11 +68,7 @@ const Navigator = () => {
               component={EditProfile}
               options={{headerShown: false}}
             />
-            <Stack.Screen
-              name="ForgotPassword"
-              component={ForgotPassword}
-              options={{headerShown: false}}
-            />
+            
             <Stack.Screen
               name="MissingReport"
               component={MissingReport}
@@ -99,6 +95,11 @@ const Navigator = () => {
             <Stack.Screen
               name="Register"
               component={Registration}
+              options={{headerShown: false}}
+            />
+          <Stack.Screen
+              name="ForgotPassword"
+              component={ForgotPassword}
               options={{headerShown: false}}
             />
           </>
