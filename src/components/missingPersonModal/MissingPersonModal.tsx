@@ -1,14 +1,33 @@
 import {View, Modal, Text, Image, TextInput, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
-import Button from '../ui/button/Button';
+import {personType} from '../../types/personTypes';
+import useContact from '../../hooks/missingPersonModal/useContact';
+import { colors } from '../../constants/colors';
 
 const MissingPersonModal = ({
   modalVisible,
+  name,
+  age,
+  lastSeen,
+  location,
+  gender,
+  photo,
+  email,
   handleModal,
 }: {
   modalVisible: boolean;
   handleModal: () => void;
-}) => {
+} & personType) => {
+  const {
+    loading,
+    img,
+    locations,
+    description,
+    contactViaEmail,
+    handleReportFound,
+    handleChange,
+  } = useContact(photo, name, age, lastSeen, gender, handleModal);
+
   return (
     <Modal
       animationType="slide"
@@ -40,7 +59,7 @@ const MissingPersonModal = ({
           />
           <View style={{display: 'flex', alignItems: 'center'}}>
             <Image
-              source={require('../../assets/icons/images/person.png')}
+              source={img}
               style={{
                 width: 100,
                 height: 100,
@@ -57,7 +76,7 @@ const MissingPersonModal = ({
                 lineHeight: 17,
                 color: 'black',
               }}>
-              John Doe
+              {name}
             </Text>
             <Text
               style={{
@@ -67,7 +86,7 @@ const MissingPersonModal = ({
                 lineHeight: 17,
                 color: 'black',
               }}>
-              25YearsOldMale
+              {age} {gender}
             </Text>
             <Text
               style={{
@@ -77,7 +96,7 @@ const MissingPersonModal = ({
                 lineHeight: 17,
                 color: 'black',
               }}>
-              Last seen: time
+              Last seen: {lastSeen} IST
             </Text>
             <Text
               style={{
@@ -87,7 +106,7 @@ const MissingPersonModal = ({
                 lineHeight: 17,
                 color: 'black',
               }}>
-              Last seen location: location
+              Last seen location: {location}
             </Text>
           </View>
           <View style={{marginTop: 16}}>
@@ -103,6 +122,8 @@ const MissingPersonModal = ({
               }}
               placeholder="Location"
               placeholderTextColor="black"
+              value={locations}
+              onChangeText={text => handleChange('location', text)}
             />
             <TextInput
               style={{
@@ -118,47 +139,52 @@ const MissingPersonModal = ({
               multiline={true}
               placeholder="More Description"
               placeholderTextColor="black"
+              value={description}
+              onChangeText={text => handleChange('description', text)}
             />
           </View>
           <View style={{marginTop: 112, marginHorizontal: 16, display: 'flex'}}>
             <Pressable
               style={{
                 borderWidth: 1,
-                borderColor: '#5b59fe',
+                borderColor: colors.blue,
                 paddingVertical: 10,
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 borderRadius: 8,
-              }}>
+              }}
+              onPress={() => contactViaEmail(email)}>
               <Text
                 style={{
-                  color: '#5b59fe',
+                  color: colors.blue,
                   fontFamily: 'Montserrat',
                   fontWeight: '700',
-                  fontSize:11
+                  fontSize: 11,
                 }}>
                 Contact via Email
               </Text>
             </Pressable>
             <Pressable
               style={{
-                backgroundColor: '#5b59fe',
+                backgroundColor: colors.blue,
                 paddingVertical: 10,
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 marginTop: 16,
                 borderRadius: 8,
-              }}>
+              }}
+              onPress={() => handleReportFound(email)}
+              disabled={loading}>
               <Text
                 style={{
                   color: 'white',
                   fontFamily: 'Montserrat',
                   fontWeight: '700',
-                  fontSize:11
+                  fontSize: 11,
                 }}>
-                Report Found
+                {loading ? 'Reporting...' : 'Report Found'}
               </Text>
             </Pressable>
           </View>

@@ -1,16 +1,16 @@
 import {View, Text, Image, ScrollView, SafeAreaView} from 'react-native';
-import Logo from '../../components/logo/Logo';
-import Card from '../../components/cards/Card';
-import Navbar from '../../components/navbar/Navbar';
-import SearchInput from '../../components/ui/searchInput/SearchInput';
 import useTypeNavigation from '../../hooks/useTypeNavigation';
+import useGetReports from '../../hooks/home/useGetReports';
+import {Logo, Card, Navbar, SearchInput,} from '../../components'
+import { colors } from '../../constants/colors';
 
 const Home = () => {
   const navigation = useTypeNavigation();
+  const {data} = useGetReports();
   return (
     <ScrollView alwaysBounceVertical={true}>
       <View style={{display: 'flex', alignItems: 'center', marginTop: 8}}>
-        <Logo color="#5b59fe" />
+        <Logo color={colors.blue} />
       </View>
       <SearchInput marginHorizontal={45} />
       <View style={{display: 'flex', alignItems: 'center', marginTop: 43}}>
@@ -36,7 +36,7 @@ const Home = () => {
           Featured Profiles
         </Text>
         <Text
-          onPress={() => navigation.navigate('Profile')}
+          onPress={() => data.length !== 0 && navigation.navigate('Profile')}
           style={{
             fontFamily: 'Familjen Grotesk',
             fontWeight: '400',
@@ -57,9 +57,39 @@ const Home = () => {
             marginTop: 12,
             height: 304,
           }}>
-          <Card />
-          <Card />
-          <Card />
+          {data.length === 0 ? (
+            <View
+              style={{
+                height: 300,
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text
+                style={{
+                  color: 'black',
+                  fontFamily: 'Montserrat',
+                  fontWeight: '600',
+                }}>
+                NO Missing Person yet
+              </Text>
+            </View>
+          ) : (
+            data?.map(da => (
+              <Card
+                postDate={da.postDate}
+                key={da.id}
+                name={da.name}
+                age={da.age}
+                location={da.location}
+                lastSeen={da.lastSeen}
+                gender={da.gender}
+                photo={da.photo}
+                email={da.email}
+              />
+            ))
+          )}
         </ScrollView>
       </SafeAreaView>
       <Navbar />

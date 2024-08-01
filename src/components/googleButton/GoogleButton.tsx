@@ -1,4 +1,4 @@
-import {View, ToastAndroid} from 'react-native';
+import {View, ToastAndroid, Pressable, Image} from 'react-native';
 import Link from 'react-native-vector-icons/FontAwesome';
 import useLogin from '../../hooks/login/useLogin';
 
@@ -6,7 +6,16 @@ const GoogleButton = () => {
   const {onGoogleButtonPress} = useLogin();
   return (
     <View style={{display: 'flex', alignItems: 'center', marginTop: 27}}>
-      <View
+      <Pressable
+        onPress={() =>
+          onGoogleButtonPress()
+            .then(() => {
+              ToastAndroid.show('User Singed in', ToastAndroid.LONG);
+            })
+            .catch(error => {
+              ToastAndroid.show(error + '', ToastAndroid.LONG);
+            })
+        }
         style={{
           borderWidth: 1,
           borderColor: '#0802A3',
@@ -17,21 +26,11 @@ const GoogleButton = () => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Link
-          onPress={() =>
-            onGoogleButtonPress()
-              .then(() => {
-                ToastAndroid.show('User Singed in', ToastAndroid.LONG);
-              })
-              .catch(error => {
-                ToastAndroid.show(error + '', ToastAndroid.LONG);
-              })
-          }
-          name="google"
-          size={34}
-          color="red"
+        <Image
+          source={require('../../assets/icons/images/Google.png')}
+          style={{height: 34, width: 34}}
         />
-      </View>
+      </Pressable>
     </View>
   );
 };

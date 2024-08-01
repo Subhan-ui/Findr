@@ -28,29 +28,26 @@ const useEdit = () => {
   const handleChoosePhoto = async () => {
     try {
       setLoading(true);
-      console.log('response');
-      // const options = {
-      //   storageOptions: {
-      //     path: 'image',
-      //   },
-      // };
       launchImageLibrary({mediaType: 'photo'}, (response: any) => {
         if (response.didCancel) {
-          console.log('User cancelled image picker');
+          ToastAndroid.show('User cancelled image picker', ToastAndroid.LONG);
         } else if (response.error) {
-          console.log('Image picker error: ', response.error);
+          ToastAndroid.show(
+            `Image picker error:  ${response.error}`,
+            ToastAndroid.LONG,
+          );
         } else {
           let imageUri = response.uri || response.assets?.[0]?.uri;
           setPhoto(imageUri);
         }
-        console.log(photo);
       });
-    } catch (err) {
-      console.log(err);
+    } catch (err: any) {
+      ToastAndroid.show(err.message, ToastAndroid.LONG);
     } finally {
       setLoading(false);
     }
   };
+
   const handleSaveChanges = () => {
     setLoading(true);
     const updateUserProfile = {
@@ -67,9 +64,11 @@ const useEdit = () => {
         setLoading(false);
       });
   };
+
   const handleChanges = (text: string) => {
     dispatch(handleChangeName(text));
   };
+
   return {
     name,
     photo,

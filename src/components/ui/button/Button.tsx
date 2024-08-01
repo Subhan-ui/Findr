@@ -1,4 +1,5 @@
 import {Pressable, StyleSheet, Text} from 'react-native';
+import { colors } from '../../../constants/colors';
 
 const Button = ({
   children,
@@ -12,7 +13,7 @@ const Button = ({
   const styles = StyleSheet.create({
     view: {
       width: '100%',
-      backgroundColor: loading ? '#5b59feb5' : '#5B59FE',
+      backgroundColor: loading ? colors.blueDisabled : colors.blue,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',

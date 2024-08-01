@@ -1,11 +1,14 @@
-import {Image, Text, View} from 'react-native';
-import Logo from '../../components/logo/Logo';
-import EmailButton from '../../components/ui/emailButton/EmailButton';
-import PasswordInput from '../../components/ui/passwordInput/PasswordInput';
-import Button from '../../components/ui/button/Button';
+import {Image, ScrollView, Text, View} from 'react-native';
 import useTypeNavigation from '../../hooks/useTypeNavigation';
 import useLogin from '../../hooks/login/useLogin';
-import GoogleButton from '../../components/googleButton/GoogleButton';
+import {
+  Logo,
+  EmailButton,
+  PasswordInput,
+  Button,
+  GoogleButton,
+} from '../../components';
+import { colors } from '../../constants/colors';
 
 const Login = () => {
   const navigation = useTypeNavigation();
@@ -18,14 +21,14 @@ const Login = () => {
           marginTop: 55,
           marginLeft: 34,
           marginRight: 34,
-          height: 812,
+          height: '100%',
         }}>
         <View
           style={{
             display: 'flex',
             alignItems: 'center',
           }}>
-          <Logo color="#5b59fe" />
+          <Logo color={colors.blue} />
         </View>
         <Text
           style={{

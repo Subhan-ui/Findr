@@ -1,12 +1,14 @@
 import {View, Text, KeyboardAvoidingView} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/Ionicons';
-import TextInputs from '../../components/ui/textInput/TextInput';
-import EmailButton from '../../components/ui/emailButton/EmailButton';
-import Button from '../../components/ui/button/Button';
 import useTypeNavigation from '../../hooks/useTypeNavigation';
-import EditProfileImage from '../../components/editProfileImage/EditProfileImage';
 import useEdit from '../../hooks/editProfile/useEdit';
+import {
+  TextInputs,
+  Button,
+  EmailButton,
+  EditProfileImage,
+} from '../../components';
 
 const EditProfile = () => {
   const navigation = useTypeNavigation();

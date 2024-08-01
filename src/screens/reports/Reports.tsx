@@ -1,12 +1,12 @@
-import {View} from 'react-native';
-import TopBar from '../../components/topBar/TopBar';
-import Navbar from '../../components/navbar/Navbar';
-import MissingReport from '../../components/missingReport/MissingReport';
+import {ScrollView, Text, View} from 'react-native';
+import useReports from '../../hooks/reports/useReports';
+import {TopBar, Navbar, MissingReport} from '../../components';
 
 const Reports = () => {
+  const {reports} = useReports();
   return (
     <>
-      <View style={{marginHorizontal: 20}}>
+      <ScrollView style={{marginHorizontal: 20}}>
         <View
           style={{
             display: 'flex',
@@ -17,8 +17,31 @@ const Reports = () => {
           }}>
           <TopBar text="Reports" />
         </View>
-        <MissingReport />
-      </View>
+        {reports.length === 0 ? (
+          <View
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text>No Reports yet</Text>
+          </View>
+        ) : (
+          reports?.map(report => (
+            <MissingReport
+              key={report.id}
+              name={report.name}
+              reportedBy={report.reportedBy}
+              location={report.location}
+              description={report.description}
+              email={report.senderEmail}
+              photo={report.photo}
+            />
+          ))
+        )}
+      </ScrollView>
       <View
         style={{
           position: 'absolute',

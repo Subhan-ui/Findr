@@ -6,6 +6,7 @@ import EmailButton from '../ui/emailButton/EmailButton';
 import PasswordInput from '../ui/passwordInput/PasswordInput';
 import TextInputs from '../ui/textInput/TextInput';
 import useRegister from '../../hooks/registration/useRegister';
+import { colors } from '../../constants/colors';
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
   },
   Input: {
     borderWidth: 2,
-    borderColor: '#d0d5dd',
+    borderColor: colors.gray,
     paddingLeft: 14,
     paddingRight: 14,
     paddingTop: 10,
@@ -88,7 +89,7 @@ const RegistrationForm = () => {
         <Text
           style={{
             fontFamily: 'Familjen Grotesk',
-            color: '#5b59fe',
+            color: colors.blue,
             fontWeight: '400',
             fontSize: 16,
             textDecorationLine: 'underline',

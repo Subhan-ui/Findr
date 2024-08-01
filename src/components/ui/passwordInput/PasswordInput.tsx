@@ -4,6 +4,7 @@ import {
   handleChangePassword,
   selectPassword,
 } from '../../../store/features/loginSlice';
+import { colors } from '../../../constants/colors';
 
 const styles = StyleSheet.create({
   nameInput: {
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
   },
   Input: {
     borderWidth: 2,
-    borderColor: '#d0d5dd',
+    borderColor: colors.gray,
     paddingLeft: 14,
     paddingRight: 14,
     paddingTop: 10,

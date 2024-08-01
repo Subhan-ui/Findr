@@ -1,5 +1,6 @@
-import {Image, View, Text, StyleSheet} from 'react-native';
-import RegistrationForm from '../../components/registrationForm/RegistrationForm';
+import {Image, View, Text, StyleSheet, ScrollView} from 'react-native';
+import {RegistrationForm} from '../../components';
+import { colors } from '../../constants/colors';
 
 const styles = StyleSheet.create({
   imageView: {
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Familjen Grotesk',
-    color: '#5B59FE',
+    color: colors.blue,
     fontSize: 64,
     fontWeight: '700',
   },
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
 });
 
 const Registration = () => (
-  <>
+  <ScrollView>
     <View style={styles.imageView}>
       <Image
         style={styles.image}
@@ -43,7 +44,7 @@ const Registration = () => (
       <Text style={styles.secText}>Join the Search for Hope</Text>
     </View>
     <RegistrationForm />
-  </>
+  </ScrollView>
 );
 
 export default Registration;

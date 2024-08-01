@@ -1,14 +1,5 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from '../screens/home/Home';
-import EditProfile from '../screens/editProfile/EditProfile';
-import ForgotPassword from '../screens/forgotPassword/ForgotPassword';
-import Login from '../screens/login/Login';
-import MissingReport from '../screens/missingReport/MissingReport';
-import ProfileFlow from '../screens/profileFlow/ProfileFlow';
-import Registration from '../screens/registration/Registration';
-import SplashScreen from '../screens/spashScreen/SpashScreen';
-import Reports from '../screens/reports/Reports';
 import {navigatorTypes} from '../types/navigatorTypes';
 import {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
@@ -19,7 +10,18 @@ import {
   handleUser,
   selectUser,
 } from '../store/features/loginSlice';
-import { StatusBar } from 'react-native';
+import {StatusBar} from 'react-native';
+import {
+  Home,
+  EditProfile,
+  ForgotPassword,
+  Login,
+  MissingReport,
+  ProfileFlow,
+  Registration,
+  SplashScreen,
+  Reports,
+} from '../screens';
 
 const Navigator = () => {
   const dispatch = useAppDispatch();
@@ -45,11 +47,9 @@ const Navigator = () => {
     return () => unsubscribe();
   }, [dispatch]);
 
-  console.log('User:', user);
-
   return (
     <NavigationContainer>
-    <StatusBar backgroundColor='white' barStyle="dark-content"/>
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
       <Stack.Navigator>
         <Stack.Screen
           name="SplashScreen"
@@ -68,7 +68,7 @@ const Navigator = () => {
               component={EditProfile}
               options={{headerShown: false}}
             />
-            
+
             <Stack.Screen
               name="MissingReport"
               component={MissingReport}
@@ -97,7 +97,7 @@ const Navigator = () => {
               component={Registration}
               options={{headerShown: false}}
             />
-          <Stack.Screen
+            <Stack.Screen
               name="ForgotPassword"
               component={ForgotPassword}
               options={{headerShown: false}}

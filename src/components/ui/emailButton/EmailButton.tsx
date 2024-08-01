@@ -5,6 +5,7 @@ import {
   handleChangeEmail,
   selectEmail,
 } from '../../../store/features/loginSlice';
+import { colors } from '../../../constants/colors';
 
 const styles = StyleSheet.create({
   nameInput: {
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
   },
   InputEmail: {
     borderWidth: 2,
-    borderColor: '#d0d5dd',
+    borderColor: colors.gray,
     paddingLeft: 42,
     paddingRight: 14,
     paddingTop: 10,

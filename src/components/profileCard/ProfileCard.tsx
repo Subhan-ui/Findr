@@ -1,6 +1,25 @@
 import {View, Image, Text, Pressable} from 'react-native';
+import MissingPersonModal from '../missingPersonModal/MissingPersonModal';
+import {useState} from 'react';
+import {personType} from '../../types/personTypes';
+import ViewButton from '../viewButton/ViewButton';
 
-const ProfileCard = ({handleModal}: {handleModal?: () => void}) => {
+const ProfileCard = ({
+  name,
+  age,
+  lastSeen,
+  location,
+  gender,
+  photo,
+  email,
+  postDate,
+}: personType) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const handleModal = () => {
+    setModalVisible(prev => !prev);
+  };
+  const time = new Date(lastSeen).toLocaleString();
+  const img = {uri: photo};
   return (
     <View
       style={{
@@ -10,12 +29,19 @@ const ProfileCard = ({handleModal}: {handleModal?: () => void}) => {
         display: 'flex',
         flexDirection: 'row',
       }}>
-      <Image
-        source={require('../../assets/icons/images/person.png')}
-        width={115}
-        height={154}
-        style={{borderRadius: 4}}
+      <MissingPersonModal
+        modalVisible={modalVisible}
+        handleModal={handleModal}
+        name={name}
+        age={age}
+        lastSeen={time}
+        location={location}
+        gender={gender}
+        photo={photo}
+        email={email}
+        postDate={postDate}
       />
+      <Image source={img} width={115} height={154} style={{borderRadius: 4}} />
       <View style={{marginLeft: 8}}>
         <Text
           style={{
@@ -25,7 +51,7 @@ const ProfileCard = ({handleModal}: {handleModal?: () => void}) => {
             color: 'black',
             lineHeight: 24,
           }}>
-          Name: John Doe
+          Name: {name}
         </Text>
         <Text
           style={{
@@ -35,7 +61,7 @@ const ProfileCard = ({handleModal}: {handleModal?: () => void}) => {
             color: 'black',
             lineHeight: 24,
           }}>
-          Age: 5 (Male)
+          Age: {age} ({gender})
         </Text>
         <Text
           style={{
@@ -45,7 +71,7 @@ const ProfileCard = ({handleModal}: {handleModal?: () => void}) => {
             color: 'black',
             lineHeight: 24,
           }}>
-          Last Seen: Some time
+          Last Seen: {time} IST
         </Text>
         <Text
           style={{
@@ -55,22 +81,9 @@ const ProfileCard = ({handleModal}: {handleModal?: () => void}) => {
             color: 'black',
             lineHeight: 24,
           }}>
-          Last Seen Location: Some Location
+          Last Seen Location: {location}
         </Text>
-        <Pressable
-          onPress={handleModal}
-          style={{
-            marginTop: 12,
-            backgroundColor: '#5b59fe',
-            borderRadius: 8,
-            width: 93,
-            height: 24,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text style={{color: 'white', fontSize: 11}}>View Details</Text>
-        </Pressable>
+        <ViewButton handleModal={handleModal} text="Details" width={93} />
       </View>
     </View>
   );

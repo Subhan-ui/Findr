@@ -1,6 +1,9 @@
 import { View, Text, ScrollView } from "react-native";
 
-const Filter = ()=>{
+
+type typeFilter='male'|'female'|'age'|'all'
+
+const Filter = ({changeFilter}:{changeFilter:(value:typeFilter)=>void})=>{
     return (
         <><View style={{marginTop: 30, marginHorizontal: 20, display: 'flex', flexDirection: 'row', alignItems: 'center', }}>
         <Text
@@ -22,7 +25,20 @@ const Filter = ()=>{
               alignItems: 'center',
               marginLeft: 16
             }}>
-            <Text style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
+            <Text onPress={()=>changeFilter('all')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
+              All
+            </Text>
+          </View>
+          <View
+            style={{
+              height: 36,
+              width: 57,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginLeft: 16
+            }}>
+            <Text onPress={()=>changeFilter('male')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
               Male
             </Text>
           </View>
@@ -35,7 +51,7 @@ const Filter = ()=>{
               alignItems: 'center',
               marginLeft: 16
             }}>
-            <Text style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
+            <Text onPress={()=>changeFilter('female')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
               Female
             </Text>
           </View>
@@ -61,7 +77,7 @@ const Filter = ()=>{
               alignItems: 'center',
               marginLeft: 16
             }}>
-            <Text style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
+            <Text onPress={()=>changeFilter('age')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
               Age
             </Text>
           </View>
@@ -74,7 +90,7 @@ const Filter = ()=>{
               alignItems: 'center',
               marginLeft: 16
             }}>
-            <Text style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
+            <Text onPress={()=>changeFilter('age')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
               Age
             </Text>
           </View>
@@ -87,7 +103,7 @@ const Filter = ()=>{
               alignItems: 'center',
               marginLeft: 16
             }}>
-            <Text style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
+            <Text onPress={()=>changeFilter('age')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
               Age
             </Text>
           </View>

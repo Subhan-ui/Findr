@@ -1,8 +1,6 @@
 import {Image, Text, View} from 'react-native';
-import EmailButton from '../../components/ui/emailButton/EmailButton';
-import Button from '../../components/ui/button/Button';
-import TopBar from '../../components/topBar/TopBar';
 import usePassword from '../../hooks/forgotPassword/usePassword';
+import {EmailButton, Button, TopBar} from '../../components';
 
 const ForgotPassword = () => {
   const {handleForgotPassword} = usePassword();

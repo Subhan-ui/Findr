@@ -18,7 +18,6 @@ const usePassword = () => {
         navigation.navigate('Login');
       })
       .catch(error => {
-        console.log(error);
         ToastAndroid.show(error.message, ToastAndroid.LONG);
       });
   };

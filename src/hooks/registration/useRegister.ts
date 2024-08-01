@@ -65,11 +65,11 @@ const useRegister = () => {
     dispatch(handleChangeName(text));
   };
   return {
-    onEmailSignUp,
-    loading,
-    onPressFunction,
     clicked,
     name,
+    loading,
+    onEmailSignUp,
+    onPressFunction,
     handleChanges,
   };
 };

@@ -1,12 +1,11 @@
 import {View, Text, StyleSheet} from 'react-native';
 
-
-const Logo = ({color}:{color:string}) => {
+const Logo = ({color}: {color: string}) => {
   const styles = StyleSheet.create({
-    view:{
-      width:167,
-      height:96,
-      position: 'relative'
+    view: {
+      width: 167,
+      height: 96,
+      position: 'relative',
     },
     text: {
       fontFamily: 'Familjen Grotesk',
