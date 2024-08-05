@@ -1,15 +1,12 @@
 import {Pressable, StyleSheet, Text} from 'react-native';
 import { colors } from '../../../constants/colors';
+import { btnType } from '../../../types/btnType';
 
 const Button = ({
   children,
   onPress,
   loading,
-}: {
-  children: string | string[];
-  onPress?: () => void;
-  loading?: boolean;
-}) => {
+}: btnType) => {
   const styles = StyleSheet.create({
     view: {
       width: '100%',

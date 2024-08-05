@@ -1,14 +1,11 @@
 import {View, Text} from 'react-native';
+import { wrapper } from '../../types/missingReportType';
 
 const MissingReportWrapper = ({
   text,
   children,
   marginTop
-}: {
-  text: string;
-  children: React.ReactNode;
-  marginTop:number
-}) => {
+}: wrapper) => {
   return (
     <View style={{marginTop:marginTop}}>
       <Text
@@ -17,7 +14,6 @@ const MissingReportWrapper = ({
           fontSize: 23,
           fontWeight: '400',
           color: 'black',
-        //   marginTop,
         }}>
         {text}
       </Text>

@@ -1,16 +1,5 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
-
-type stateTypes = {
-  name: string;
-  email: string;
-  password: string;
-  user: {
-    displayName: string | null;
-    email: string | null;
-    photoURL: string | null;
-    uid: string | null;
-  } | null;
-};
+import { stateTypes, user } from '../../types/loginSliceType';
 
 const initialState: stateTypes = {
   name: '',
@@ -34,12 +23,7 @@ const loginSlice = createSlice({
     },
     handleUser: (
       state,
-      action: PayloadAction<{
-        displayName: string | null;
-        email: string | null;
-        photoURL: string | null;
-        uid: string | null;
-      }>,
+      action: PayloadAction<user>,
     ) => {
       state.user = {...action.payload};
     },

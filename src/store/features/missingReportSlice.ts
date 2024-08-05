@@ -66,13 +66,13 @@ const missingReportSlice = createSlice({
         state.searchedData = state.data;
       }
       if (action.payload === 'male') {
-        const male = state.data.filter(
+        const male = state.data?.filter(
           data => data.gender.toLowerCase() === 'male',
         );
         state.searchedData = male;
       }
       if (action.payload === 'female') {
-        const female = state.data.filter(
+        const female = state.data?.filter(
           data => data.gender.toLowerCase() === 'female',
         );
         state.searchedData = female;
@@ -89,8 +89,8 @@ const missingReportSlice = createSlice({
       if (action.payload.trim() === '') {
         state.searchedData = state.data;
       } else {
-        const filterData = state.data.filter(data =>
-          data.name.toLowerCase().startsWith(state.searchedQuery.toLowerCase()),
+        const filterData = state.data?.filter(data =>
+          data?.name.toLowerCase().startsWith(state.searchedQuery.toLowerCase()),
         );
         state.searchedData = filterData;
       }

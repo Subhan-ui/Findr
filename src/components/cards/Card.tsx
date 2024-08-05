@@ -1,9 +1,9 @@
-import {View, Text, Image, Pressable} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import {personType} from '../../types/personTypes';
 import MissingPersonModal from '../missingPersonModal/MissingPersonModal';
-import {useState} from 'react';
 import ViewButton from '../viewButton/ViewButton';
 import { colors } from '../../constants/colors';
+import useHandleCard from '../../hooks/cards/useHandleCard';
 
 const Card = ({
   name,
@@ -15,12 +15,13 @@ const Card = ({
   email,
   postDate,
 }: personType) => {
-  const time = new Date(lastSeen).toLocaleString();
-  const img = {uri: photo};
-  const [modalVisible, setModalVisible] = useState(false);
-  const handleModal = () => {
-    setModalVisible(prev => !prev);
-  };
+  const {
+    time,
+    img,
+    modalVisible,
+    handleModal,
+  } = useHandleCard(lastSeen, photo)
+
   return (
     <View
       style={{

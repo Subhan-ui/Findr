@@ -29,15 +29,15 @@ const useEdit = () => {
     try {
       setLoading(true);
       launchImageLibrary({mediaType: 'photo'}, (response: any) => {
-        if (response.didCancel) {
+        if (response?.didCancel) {
           ToastAndroid.show('User cancelled image picker', ToastAndroid.LONG);
-        } else if (response.error) {
+        } else if (response?.error) {
           ToastAndroid.show(
-            `Image picker error:  ${response.error}`,
+            `Image picker error:  ${response?.error}`,
             ToastAndroid.LONG,
           );
         } else {
-          let imageUri = response.uri || response.assets?.[0]?.uri;
+          let imageUri = response?.uri || response?.assets?.[0]?.uri;
           setPhoto(imageUri);
         }
       });

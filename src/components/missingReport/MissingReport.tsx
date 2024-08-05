@@ -1,5 +1,7 @@
 import {View, Text, Image, Pressable, Linking} from 'react-native';
 import { colors } from '../../constants/colors';
+import { reportType } from '../../types/missingReportType';
+import useEmail from '../../hooks/contactEmail/useEmail';
 
 const MissingReport = ({
   name,
@@ -8,27 +10,8 @@ const MissingReport = ({
   description,
   email,
   photo,
-}: {
-  name: string;
-  reportedBy: string;
-  location: string;
-  description: string;
-  email: string;
-  photo: string;
-}) => {
-  const contactViaEmail = () => {
-    const emailUrl = `mailto:${email}`;
-    Linking.canOpenURL(emailUrl)
-      .then(() => {
-        return Linking.openURL(emailUrl);
-      })
-      .catch(error => {
-        console.error(
-          'An error occurred while trying to open the email client:',
-          error,
-        );
-      });
-  };
+}: reportType) => {
+  const {contactViaEmail} = useEmail(email)
 
   return (
     <View style={{marginTop: 40, display: 'flex', flexDirection: 'row'}}>

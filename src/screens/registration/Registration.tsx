@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   secText: {
     fontWeight: '400',
-    color: '#121212',
+    color: colors.black,
     fontSize: 23,
     fontFamily: 'Familjen Grotesk',
   },

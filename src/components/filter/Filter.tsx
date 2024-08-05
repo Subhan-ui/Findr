@@ -1,11 +1,17 @@
-import { View, Text, ScrollView } from "react-native";
+import {View, Text, ScrollView} from 'react-native';
+import {changeFilter} from '../../types/filterType';
 
-
-type typeFilter='male'|'female'|'age'|'all'
-
-const Filter = ({changeFilter}:{changeFilter:(value:typeFilter)=>void})=>{
-    return (
-        <><View style={{marginTop: 30, marginHorizontal: 20, display: 'flex', flexDirection: 'row', alignItems: 'center', }}>
+const Filter = ({changeFilter}: changeFilter) => {
+  return (
+    <>
+      <View
+        style={{
+          marginTop: 30,
+          marginHorizontal: 20,
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}>
         <Text
           style={{
             color: 'black',
@@ -13,9 +19,9 @@ const Filter = ({changeFilter}:{changeFilter:(value:typeFilter)=>void})=>{
             fontSize: 14,
             fontWeight: '500',
           }}>
-          Filter By:{' '}
+          Filter By:
         </Text>
-        <ScrollView horizontal style={{display:'flex', flexDirection: 'row', }}>
+        <ScrollView horizontal style={{display: 'flex', flexDirection: 'row'}}>
           <View
             style={{
               height: 36,
@@ -23,9 +29,11 @@ const Filter = ({changeFilter}:{changeFilter:(value:typeFilter)=>void})=>{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              marginLeft: 16
+              marginLeft: 16,
             }}>
-            <Text onPress={()=>changeFilter('all')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
+            <Text
+              onPress={() => changeFilter('all')}
+              style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
               All
             </Text>
           </View>
@@ -36,9 +44,11 @@ const Filter = ({changeFilter}:{changeFilter:(value:typeFilter)=>void})=>{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              marginLeft: 16
+              marginLeft: 16,
             }}>
-            <Text onPress={()=>changeFilter('male')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
+            <Text
+              onPress={() => changeFilter('male')}
+              style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
               Male
             </Text>
           </View>
@@ -49,9 +59,11 @@ const Filter = ({changeFilter}:{changeFilter:(value:typeFilter)=>void})=>{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              marginLeft: 16
+              marginLeft: 16,
             }}>
-            <Text onPress={()=>changeFilter('female')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
+            <Text
+              onPress={() => changeFilter('female')}
+              style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
               Female
             </Text>
           </View>
@@ -62,7 +74,7 @@ const Filter = ({changeFilter}:{changeFilter:(value:typeFilter)=>void})=>{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              marginLeft: 16
+              marginLeft: 16,
             }}>
             <Text style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
               Trans
@@ -75,43 +87,26 @@ const Filter = ({changeFilter}:{changeFilter:(value:typeFilter)=>void})=>{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              marginLeft: 16
+              marginLeft: 16,
             }}>
-            <Text onPress={()=>changeFilter('age')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
-              Age
-            </Text>
-          </View>
-          <View
-            style={{
-              height: 36,
-              width: 57,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginLeft: 16
-            }}>
-            <Text onPress={()=>changeFilter('age')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
-              Age
-            </Text>
-          </View>
-          <View
-            style={{
-              height: 36,
-              width: 57,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginLeft: 16
-            }}>
-            <Text onPress={()=>changeFilter('age')} style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
+            <Text
+              onPress={() => changeFilter('age')}
+              style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
               Age
             </Text>
           </View>
         </ScrollView>
       </View>
-        <View style={{marginTop:20,borderWidth:0.5, borderColor: 'gray', width:'100%', }}/>
-      </>
-    )
-}
+      <View
+        style={{
+          marginTop: 20,
+          borderWidth: 0.5,
+          borderColor: 'gray',
+          width: '100%',
+        }}
+      />
+    </>
+  );
+};
 
 export default Filter;

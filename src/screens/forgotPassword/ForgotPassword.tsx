@@ -1,6 +1,7 @@
 import {Image, Text, View} from 'react-native';
 import usePassword from '../../hooks/forgotPassword/usePassword';
 import {EmailButton, Button, TopBar} from '../../components';
+import { colors } from '../../constants/colors';
 
 const ForgotPassword = () => {
   const {handleForgotPassword} = usePassword();
@@ -30,7 +31,7 @@ const ForgotPassword = () => {
             fontSize: 16,
             textAlign: 'center',
             lineHeight: 19,
-            color: '#222526',
+            color: colors.shady,
           }}>
           Please enter the email address associated with your account. We'll
           send you a verification code to reset your password.

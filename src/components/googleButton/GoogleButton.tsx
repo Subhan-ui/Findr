@@ -1,6 +1,6 @@
 import {View, ToastAndroid, Pressable, Image} from 'react-native';
-import Link from 'react-native-vector-icons/FontAwesome';
 import useLogin from '../../hooks/login/useLogin';
+import {colors} from '../../constants/colors';
 
 const GoogleButton = () => {
   const {onGoogleButtonPress} = useLogin();
@@ -18,7 +18,7 @@ const GoogleButton = () => {
         }
         style={{
           borderWidth: 1,
-          borderColor: '#0802A3',
+          borderColor: colors.darkBlue,
           height: 57,
           width: 60,
           borderRadius: 12,

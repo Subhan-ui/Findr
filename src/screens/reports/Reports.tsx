@@ -17,7 +17,7 @@ const Reports = () => {
           }}>
           <TopBar text="Reports" />
         </View>
-        {reports.length === 0 ? (
+        {reports?.length === 0 ? (
           <View
             style={{
               width: '100%',
@@ -31,13 +31,13 @@ const Reports = () => {
         ) : (
           reports?.map(report => (
             <MissingReport
-              key={report.id}
-              name={report.name}
-              reportedBy={report.reportedBy}
-              location={report.location}
-              description={report.description}
-              email={report.senderEmail}
-              photo={report.photo}
+              key={report?.id}
+              name={report?.name}
+              reportedBy={report?.reportedBy}
+              location={report?.location}
+              description={report?.description}
+              email={report?.senderEmail}
+              photo={report?.photo}
             />
           ))
         )}

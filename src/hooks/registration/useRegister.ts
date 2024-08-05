@@ -38,14 +38,14 @@ const useRegister = () => {
           navigation.navigate('Home');
         })
         .catch(error => {
-          if (error.code === 'auth/email-already-in-use') {
+          if (error?.code === 'auth/email-already-in-use') {
             ToastAndroid.show(
               'That email address is already in use!',
               ToastAndroid.LONG,
             );
           }
 
-          if (error.code === 'auth/invalid-email') {
+          if (error?.code === 'auth/invalid-email') {
             ToastAndroid.show(
               'That email address is invalid!',
               ToastAndroid.LONG,
