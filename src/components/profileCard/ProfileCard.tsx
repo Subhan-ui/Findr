@@ -1,8 +1,8 @@
-import {View, Image, Text, Pressable} from 'react-native';
+import {View, Image, Text} from 'react-native';
 import MissingPersonModal from '../missingPersonModal/MissingPersonModal';
-import {useState} from 'react';
 import {personType} from '../../types/personTypes';
 import ViewButton from '../viewButton/ViewButton';
+import useHandleProfile from '../../hooks/profileCard/useHandleProfile';
 
 const ProfileCard = ({
   name,
@@ -14,12 +14,10 @@ const ProfileCard = ({
   email,
   postDate,
 }: personType) => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const handleModal = () => {
-    setModalVisible(prev => !prev);
-  };
-  const time = new Date(lastSeen).toLocaleString();
-  const img = {uri: photo};
+  const {time, img, modalVisible, handleModal} = useHandleProfile(
+    lastSeen,
+    photo,
+  );
   return (
     <View
       style={{

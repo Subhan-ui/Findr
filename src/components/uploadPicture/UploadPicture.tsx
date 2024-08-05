@@ -1,16 +1,13 @@
 import {View, Text, Pressable, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import { colors } from '../../constants/colors';
+import { uploadType } from '../../types/pictureUploadType';
 
 const UploadPicture = ({
   handleChoosePhoto,
   pic,
   handleDelete,
-}: {
-  handleChoosePhoto: () => void;
-  pic: string | null;
-  handleDelete: () => void;
-}) => {
+}: uploadType) => {
   return (
     <View>
       <Text
@@ -46,7 +43,7 @@ const UploadPicture = ({
                 fontWeight: '400',
                 color: 'black',
               }}>
-              Drag & Drop files or{' '}
+              Drag & Drop files or
             </Text>
             <Text
               style={{

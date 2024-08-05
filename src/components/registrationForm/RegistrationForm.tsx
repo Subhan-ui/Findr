@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   nameInput: {
     marginBottom: 6,
     fontWeight: '500',
-    color: '#121212',
+    color: colors.black,
   },
   Input: {
     borderWidth: 2,
@@ -74,7 +74,7 @@ const RegistrationForm = () => {
           <Text
             style={{
               fontWeight: '400',
-              color: '#667085',
+              color: colors.darkGray,
               fontSize: 14,
               lineHeight: 20,
             }}>

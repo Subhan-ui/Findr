@@ -1,28 +1,25 @@
-import {useState} from 'react';
-import {Modal, Pressable, Text, View} from 'react-native';
+
+import {Pressable, Text, View} from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import Icon from 'react-native-vector-icons/Entypo';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {
   selectDate,
   handleChangeDate,
 } from '../../store/features/missingReportSlice';
 import { colors } from '../../constants/colors';
+import { modalType } from '../../types/modalType';
 
 const DateTimeModal = ({
   modalVisible,
   handleModal,
-}: {
-  modalVisible: boolean;
-  handleModal: () => void;
-}) => {
+}: modalType) => {
   const dateISO = useAppSelector(selectDate);
   const date = new Date(dateISO);
   const dispatch = useAppDispatch();
   return (
     <>
       <View style={{marginTop: 16}}>
-        <Text style={{fontWeight: '500', fontSize: 14, color: '#000000'}}>
+        <Text style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
           Last Seen
         </Text>
         <Pressable

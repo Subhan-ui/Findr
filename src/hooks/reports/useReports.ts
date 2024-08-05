@@ -15,25 +15,25 @@ const useReports = () => {
       .where('email', '==', user?.email)
       .get()
       .then(querySnapshot => {
-        const data = querySnapshot.docs.map(query => {
-          const documentData = query.data();
+        const data = querySnapshot?.docs?.map(query => {
+          const documentData = query?.data();
           return {
-            id: documentData.id,
-            age: documentData.age,
-            description: documentData.description,
-            senderEmail: documentData.submitterEmail,
-            location: documentData.location,
-            name: documentData.name,
-            photo: documentData.photo,
-            reportedBy: documentData.reportedBy,
-            postDate: documentData.postedDate,
+            id: documentData?.id,
+            age: documentData?.age,
+            description: documentData?.description,
+            senderEmail: documentData?.submitterEmail,
+            location: documentData?.location,
+            name: documentData?.name,
+            photo: documentData?.photo,
+            reportedBy: documentData?.reportedBy,
+            postDate: documentData?.postedDate,
           };
         });
 
         dispatch(handleReports(data));
       })
       .catch(err => {
-        ToastAndroid.show(err.message, ToastAndroid.LONG);
+        ToastAndroid.show(err?.message, ToastAndroid.LONG);
       });
   }, []);
   return {reports};

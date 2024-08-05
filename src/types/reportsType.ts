@@ -9,3 +9,10 @@ export type reportsType = {
   reportedBy: string;
   postDate: string;
 };
+
+ export type initialTypes = {
+  location: string;
+  email: string;
+  description: string;
+  reports: reportsType[];
+};

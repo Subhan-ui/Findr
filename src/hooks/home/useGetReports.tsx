@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {handleChangeQuery, handleData, selectData, selectSearchData} from '../../store/features/missingReportSlice';
+import {handleChangeQuery, handleData, selectSearchData} from '../../store/features/missingReportSlice';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import firestore from '@react-native-firebase/firestore';
 
@@ -13,19 +13,19 @@ const useGetReports = () => {
       .then(querySnapshot => {
         const data = querySnapshot.docs.map(documentSnapshot => {
           const documentData = documentSnapshot.data();
-          const [day, month, year] = documentData.dateOfBirth.split(' ');
+          const [day, month, year] = documentData?.dateOfBirth.split(' ');
           const newYear = new Date().getFullYear();
           const age = Math.abs(newYear - year);
           return {
-            id: documentSnapshot.id,
-            gender: documentData.gender,
-            name: documentData.name || '',
+            id: documentData?.id,
+            gender: documentData?.gender,
+            name: documentData?.name || '',
             age: age.toString() || '',
-            lastSeen: documentData.date || '',
-            location: documentData.location || '',
-            email: documentData.email || '',
-            photo: documentData.photo,
-            postDate: documentData.postedDate,
+            lastSeen: documentData?.date || '',
+            location: documentData?.location || '',
+            email: documentData?.email || '',
+            photo: documentData?.photo,
+            postDate: documentData?.postedDate,
           };
         });
         dispatch(handleData(data));

@@ -1,29 +1,10 @@
-import {useEffect, useState} from 'react';
-import {Image, ImageSourcePropType, View} from 'react-native';
+import {Image, View} from 'react-native';
 import Icon2 from 'react-native-vector-icons/Feather';
+import {imageType} from '../../types/editProfileImageType';
+import useHandleImage from '../../hooks/editProfileImage/useHandleImage';
 
-const EditProfileImage = ({
-  photoURL,
-  photo,
-  handleChoosePhoto,
-}: {
-  photoURL: string | null | undefined;
-  photo: string | null;
-  handleChoosePhoto: () => void;
-}) => {
-  const path = '../../assets/icons/images/noProfile.png';
-  const [imageSource, setImageSource] = useState<ImageSourcePropType>(
-    require(path),
-  );
-  useEffect(() => {
-    if (photo) {
-      setImageSource({uri: photo});
-    } else if (photoURL) {
-      setImageSource({uri: photoURL});
-    } else {
-      setImageSource(require(path));
-    }
-  }, [photo, photoURL]);
+const EditProfileImage = ({photoURL, photo, handleChoosePhoto}: imageType) => {
+  const {imageSource} = useHandleImage(photo, photoURL);
 
   return (
     <>

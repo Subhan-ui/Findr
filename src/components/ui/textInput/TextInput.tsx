@@ -1,17 +1,14 @@
 import {View, Text, TextInput} from 'react-native';
 import { colors } from '../../../constants/colors';
+import { inputType } from '../../../types/btnType';
 
 const TextInputs = ({
   text,
   value,
   onChange,
-}: {
-  text: string;
-  value: string;
-  onChange: (text: string) => void;
-}) => (
+}: inputType) => (
   <View style={{marginTop: 16}}>
-    <Text style={{fontWeight: '500', fontSize: 14, color: '#000000'}}>
+    <Text style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
       {text}
     </Text>
     <TextInput

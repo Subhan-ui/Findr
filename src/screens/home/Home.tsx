@@ -36,12 +36,12 @@ const Home = () => {
           Featured Profiles
         </Text>
         <Text
-          onPress={() => data.length !== 0 && navigation.navigate('Profile')}
+          onPress={() => data?.length !== 0 && navigation.navigate('Profile')}
           style={{
             fontFamily: 'Familjen Grotesk',
             fontWeight: '400',
             fontSize: 16,
-            color: '#0802a3',
+            color: colors.darkBlue,
             textDecorationLine: 'underline',
           }}>
           See More
@@ -57,7 +57,7 @@ const Home = () => {
             marginTop: 12,
             height: 304,
           }}>
-          {data.length === 0 ? (
+          {data?.length === 0 ? (
             <View
               style={{
                 height: 300,
@@ -78,15 +78,15 @@ const Home = () => {
           ) : (
             data?.map(da => (
               <Card
-                postDate={da.postDate}
-                key={da.id}
-                name={da.name}
-                age={da.age}
-                location={da.location}
-                lastSeen={da.lastSeen}
-                gender={da.gender}
-                photo={da.photo}
-                email={da.email}
+                postDate={da?.postDate}
+                key={da?.id}
+                name={da?.name}
+                age={da?.age}
+                location={da?.location}
+                lastSeen={da?.lastSeen}
+                gender={da?.gender}
+                photo={da?.photo}
+                email={da?.email}
               />
             ))
           )}

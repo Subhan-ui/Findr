@@ -1,11 +1,4 @@
 import {ScrollView, View} from 'react-native';
-import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import {
-  handleChangeQuery,
-  handleFilter,
-  selectSearchData,
-} from '../../store/features/missingReportSlice';
-import {useEffect} from 'react';
 import {
   TopBar,
   SearchInput,
@@ -13,21 +6,10 @@ import {
   ProfileCard,
   Navbar,
 } from '../../components';
-
-type typeFilter = 'male' | 'female' | 'age' | 'all';
+import useHandleFlow from '../../hooks/profileFlow/useHandleFlow';
 
 const ProfileFlow = () => {
-  const dataF = useAppSelector(selectSearchData);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(handleFilter('all'));
-    dispatch(handleChangeQuery(''))
-  }, []);
-
-  const change = (value: typeFilter) => {
-    dispatch(handleFilter(value));
-  };
+  const {change, dataF} = useHandleFlow();
 
   return (
     <View>
@@ -47,15 +29,15 @@ const ProfileFlow = () => {
       <ScrollView style={{height: '62%'}}>
         {dataF?.map(data => (
           <ProfileCard
-            key={data.id}
-            postDate={data.postDate}
-            name={data.name}
-            age={data.age}
-            photo={data.photo}
-            location={data.location}
-            lastSeen={data.lastSeen}
-            gender={data.gender}
-            email={data.email}
+            key={data?.id}
+            postDate={data?.postDate}
+            name={data?.name}
+            age={data?.age}
+            photo={data?.photo}
+            location={data?.location}
+            lastSeen={data?.lastSeen}
+            gender={data?.gender}
+            email={data?.email}
           />
         ))}
       </ScrollView>

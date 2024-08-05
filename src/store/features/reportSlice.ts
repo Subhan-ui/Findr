@@ -1,12 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import { reportsType } from '../../types/reportsType';
-
-type initialTypes = {
-  location: string;
-  email: string;
-  description: string;
-  reports: reportsType[];
-};
+import { reportsType, initialTypes } from '../../types/reportsType';
 
 
 const initialState: initialTypes = {

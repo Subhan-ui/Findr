@@ -2,7 +2,8 @@ import {View, Modal, Text, Image, TextInput, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import {personType} from '../../types/personTypes';
 import useContact from '../../hooks/missingPersonModal/useContact';
-import { colors } from '../../constants/colors';
+import {colors} from '../../constants/colors';
+import {modalType} from '../../types/modalType';
 
 const MissingPersonModal = ({
   modalVisible,
@@ -14,10 +15,7 @@ const MissingPersonModal = ({
   photo,
   email,
   handleModal,
-}: {
-  modalVisible: boolean;
-  handleModal: () => void;
-} & personType) => {
+}: modalType & personType) => {
   const {
     loading,
     img,
@@ -37,7 +35,7 @@ const MissingPersonModal = ({
       <View
         style={{
           width: '100%',
-          backgroundColor: 'rgba(0,0,0,0.67)',
+          backgroundColor: colors.lightBlack,
           height: '100%',
           display: 'flex',
           justifyContent: 'center',

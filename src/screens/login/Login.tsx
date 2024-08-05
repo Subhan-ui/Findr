@@ -1,4 +1,4 @@
-import {Image, ScrollView, Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import useTypeNavigation from '../../hooks/useTypeNavigation';
 import useLogin from '../../hooks/login/useLogin';
 import {

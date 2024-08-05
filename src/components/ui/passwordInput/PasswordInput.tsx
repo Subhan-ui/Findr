@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   nameInput: {
     marginBottom: 6,
     fontWeight: '500',
-    color: '#121212',
+    color: colors.black,
   },
   Input: {
     borderWidth: 2,
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   textAddress: {
     fontSize: 14,
-    color: '#667085',
+    color: colors.darkGray,
   },
 });
 
