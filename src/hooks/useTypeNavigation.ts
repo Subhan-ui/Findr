@@ -1,5 +1,5 @@
 import {useNavigation, NavigationProp} from '@react-navigation/native';
-import {navigatorTypes} from '../types/navigatorTypes';
+import {navigatorTypes} from '../types/types';
 
 const useTypeNavigation = () => useNavigation<NavigationProp<navigatorTypes>>();
 

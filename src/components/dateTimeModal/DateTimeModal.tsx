@@ -7,7 +7,7 @@ import {
   handleChangeDate,
 } from '../../store/features/missingReportSlice';
 import { colors } from '../../constants/colors';
-import { modalType } from '../../types/modalType';
+import { modalType } from '../../types/types';
 
 const DateTimeModal = ({
   modalVisible,

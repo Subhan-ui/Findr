@@ -1,5 +1,5 @@
 import {View, Text} from 'react-native';
-import { wrapper } from '../../types/missingReportType';
+import { wrapper } from '../../types/types';
 
 const MissingReportWrapper = ({
   text,

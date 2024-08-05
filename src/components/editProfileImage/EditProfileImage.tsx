@@ -1,6 +1,6 @@
 import {Image, View} from 'react-native';
 import Icon2 from 'react-native-vector-icons/Feather';
-import {imageType} from '../../types/editProfileImageType';
+import {imageType} from '../../types/types';
 import useHandleImage from '../../hooks/editProfileImage/useHandleImage';
 
 const EditProfileImage = ({photoURL, photo, handleChoosePhoto}: imageType) => {

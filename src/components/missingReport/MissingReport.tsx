@@ -1,6 +1,6 @@
 import {View, Text, Image, Pressable, Linking} from 'react-native';
 import { colors } from '../../constants/colors';
-import { reportType } from '../../types/missingReportType';
+import { reportType } from '../../types/types';
 import useEmail from '../../hooks/contactEmail/useEmail';
 
 const MissingReport = ({

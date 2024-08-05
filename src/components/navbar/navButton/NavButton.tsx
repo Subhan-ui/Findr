@@ -1,6 +1,6 @@
 import {Pressable, Text} from 'react-native';
 import useTypeNavigation from '../../../hooks/useTypeNavigation';
-import { navType } from '../../../types/navbarType';
+import { navType } from '../../../types/types';
 
 const NavButton = ({
   children,

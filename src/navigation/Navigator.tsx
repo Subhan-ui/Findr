@@ -1,6 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {navigatorTypes} from '../types/navigatorTypes';
+import {navigatorTypes} from '../types/types';
 import {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import auth from '@react-native-firebase/auth';

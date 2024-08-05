@@ -1,6 +1,6 @@
 import {Pressable, StyleSheet, Text} from 'react-native';
 import { colors } from '../../../constants/colors';
-import { btnType } from '../../../types/btnType';
+import { btnType } from '../../../types/types';
 
 const Button = ({
   children,

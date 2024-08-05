@@ -1,9 +1,8 @@
 import {View, Modal, Text, Image, TextInput, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
-import {personType} from '../../types/personTypes';
 import useContact from '../../hooks/missingPersonModal/useContact';
 import {colors} from '../../constants/colors';
-import {modalType} from '../../types/modalType';
+import {personType, modalType} from '../../types/types';
 
 const MissingPersonModal = ({
   modalVisible,

@@ -1,5 +1,5 @@
 import {View, Text, ScrollView} from 'react-native';
-import {changeFilter} from '../../types/filterType';
+import {changeFilter} from '../../types/types';
 
 const Filter = ({changeFilter}: changeFilter) => {
   return (

@@ -1,5 +1,5 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
-import { stateTypes, user } from '../../types/loginSliceType';
+import { stateTypes, user } from '../../types/types';
 
 const initialState: stateTypes = {
   name: '',

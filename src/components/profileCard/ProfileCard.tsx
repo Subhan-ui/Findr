@@ -1,6 +1,6 @@
 import {View, Image, Text} from 'react-native';
 import MissingPersonModal from '../missingPersonModal/MissingPersonModal';
-import {personType} from '../../types/personTypes';
+import {personType} from '../../types/types';
 import ViewButton from '../viewButton/ViewButton';
 import useHandleProfile from '../../hooks/profileCard/useHandleProfile';
 

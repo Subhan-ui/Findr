@@ -1,7 +1,7 @@
 import {View, Text, Pressable, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import { colors } from '../../constants/colors';
-import { uploadType } from '../../types/pictureUploadType';
+import { uploadType } from '../../types/types';
 
 const UploadPicture = ({
   handleChoosePhoto,

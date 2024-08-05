@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import { reportsType, initialTypes } from '../../types/reportsType';
+import { reportsType, initialTypes } from '../../types/types';
 
 
 const initialState: initialTypes = {

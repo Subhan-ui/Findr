@@ -1,6 +1,6 @@
 import {View, Text, TextInput} from 'react-native';
 import { colors } from '../../../constants/colors';
-import { inputType } from '../../../types/btnType';
+import { inputType } from '../../../types/types';
 
 const TextInputs = ({
   text,

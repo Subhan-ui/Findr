@@ -1,5 +1,5 @@
 import {View, Text, Image} from 'react-native';
-import {personType} from '../../types/personTypes';
+import {personType} from '../../types/types';
 import MissingPersonModal from '../missingPersonModal/MissingPersonModal';
 import ViewButton from '../viewButton/ViewButton';
 import { colors } from '../../constants/colors';

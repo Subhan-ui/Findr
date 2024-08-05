@@ -1,6 +1,6 @@
 import {Pressable, Text} from 'react-native';
 import { colors } from '../../constants/colors';
-import { viewBtnType } from '../../types/btnType';
+import { viewBtnType } from '../../types/types';
 
 const ViewButton = ({
   handleModal,

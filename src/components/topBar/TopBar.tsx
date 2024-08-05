@@ -1,7 +1,7 @@
 import {Text} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import useTypeNavigation from '../../hooks/useTypeNavigation';
-import { textType } from '../../types/navbarType';
+import { textType } from '../../types/types';
 
 const TopBar = ({text}: textType) => {
   const navigation = useTypeNavigation();

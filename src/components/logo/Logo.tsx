@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet} from 'react-native';
-import {logoType} from '../../types/filterType';
+import {logoType} from '../../types/types';
 
 const Logo = ({color}: logoType) => {
   const styles = StyleSheet.create({

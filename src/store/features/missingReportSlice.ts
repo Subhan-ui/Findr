@@ -1,6 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {personType} from '../../types/personTypes';
-import {initialTypes} from '../../types/missingReportSliceStateTypes';
+import {personType, initialType as initialTypes} from '../../types/types';
 
 const initialState: initialTypes = {
   fullName: '',
