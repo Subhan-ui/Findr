@@ -1,6 +1,6 @@
 import {Image, Text, View} from 'react-native';
-import useTypeNavigation from '../../hooks/useTypeNavigation';
-import useLogin from '../../hooks/login/useLogin';
+import useTypeNavigation from '../../navigation/useTypeNavigation';
+import useLogin from './useLogin';
 import {
   Logo,
   EmailButton,
@@ -8,7 +8,8 @@ import {
   Button,
   GoogleButton,
 } from '../../components';
-import { colors } from '../../constants/colors';
+import {colors} from '../../constants/colors/colors';
+import styles from './LoginStyles';
 
 const Login = () => {
   const navigation = useTypeNavigation();
@@ -16,86 +17,33 @@ const Login = () => {
 
   return (
     <>
-      <View
-        style={{
-          marginTop: 55,
-          marginLeft: 34,
-          marginRight: 34,
-          height: '100%',
-        }}>
-        <View
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-          }}>
+      <View style={styles.wrapper}>
+        <View style={styles.logoWrap}>
           <Logo color={colors.blue} />
         </View>
-        <Text
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '700',
-            fontSize: 45,
-            color: 'black',
-            marginTop: 24,
-          }}>
-          Welcome Back
-        </Text>
+        <Text style={styles.heading}>Welcome Back</Text>
         <EmailButton />
         <PasswordInput />
-        <View style={{marginTop: 34}}>
+        <View style={styles.buttonWrap}>
           <Button onPress={() => onEmailSignIn()} loading={loading}>
             {loading ? 'logging in...' : 'Log in'}
           </Button>
         </View>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 10,
-            justifyContent: 'center',
-            marginTop: 21,
-          }}>
+        <View style={styles.options}>
           <Text
             onPress={() => navigation.navigate('ForgotPassword')}
-            style={{
-              fontFamily: 'Familjen Grotesk',
-              fontSize: 11,
-              fontWeight: '400',
-              color: 'black',
-              lineHeight: 13,
-            }}>
+            style={styles.optionsText}>
             Forget your password
           </Text>
+          <Text style={styles.optionsText}>|</Text>
           <Text
-            style={{
-              fontFamily: 'Familjen Grotesk',
-              fontSize: 11,
-              fontWeight: '400',
-              color: 'black',
-              lineHeight: 13,
-            }}>
-            |
-          </Text>
-          <Text
-            style={{
-              fontFamily: 'Familjen Grotesk',
-              fontSize: 11,
-              fontWeight: '400',
-              color: 'black',
-              lineHeight: 13,
-            }}
+            style={styles.optionsText}
             onPress={() => navigation.navigate('Register')}>
             Register for an account
           </Text>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginVertical: 16,
-            marginTop: 28,
-          }}>
-          <View style={{flex: 1, height: 1, backgroundColor: '#d0d2d7'}} />
+        <View style={styles.or}>
+          <View style={styles.orLine} />
           <Text
             style={{
               marginHorizontal: 29,
@@ -105,18 +53,13 @@ const Login = () => {
             }}>
             or
           </Text>
-          <View style={{flex: 1, height: 1, backgroundColor: '#d0d2d7'}} />
+          <View style={styles.orLine} />
         </View>
         <GoogleButton />
-        <View
-          style={{
-            position: 'absolute',
-            bottom: 50,
-            left: 0,
-            right: 0,
-            alignItems: 'center',
-          }}>
-          <Image source={require('../../assets/icons/patterns/login.png')} />
+        <View style={styles.footer}>
+          <Image
+            source={require('../../constants/images/icons/patterns/login.png')}
+          />
         </View>
       </View>
     </>

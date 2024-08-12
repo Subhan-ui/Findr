@@ -1,6 +1,6 @@
 import {ScrollView, View} from 'react-native';
 import {useState} from 'react';
-import useMissingReports from '../../hooks/missingReport/useMissingReports';
+import useMissingReports from './useMissingReports';
 import {
   TopBar,
   TextInputs,
@@ -9,108 +9,47 @@ import {
   DateTimeModal,
   MissingReportWrapper,
 } from '../../components';
+import styles from './MissingReportStyles';
 
 const MissingReport = () => {
   const [show, setShow] = useState(false);
   const {
     handleChoosePhoto,
     handleDeletePhoto,
-    handleChangeValues,
     handleSubmitReport,
     loading,
+    itemsTop,
+    itemsBelow,
     photo,
-    name,
-    gender,
-    dateOfBirth,
-    nickname,
-    height,
-    weight,
-    eyeColor,
-    hairColor,
-    length,
-    location,
   } = useMissingReports();
 
   return (
     <ScrollView>
-      <View style={{marginLeft: 20, marginRight: 30}}>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginTop: 18,
-            gap: 8,
-          }}>
+      <View style={styles.wrap}>
+        <View style={styles.headerWrap}>
           <TopBar text="Missing Person Details" />
         </View>
         <MissingReportWrapper
           marginTop={40}
           text="Basic Details of Missing Person">
-          <TextInputs
-            value={name}
-            onChange={text =>
-              handleChangeValues({name: 'fullName', value: text})
-            }
-            text="Missing Person's Full Name"
-          />
-          <TextInputs
-            value={gender}
-            onChange={text => handleChangeValues({name: 'gender', value: text})}
-            text="Gender"
-          />
-          <TextInputs
-            value={dateOfBirth}
-            onChange={text =>
-              handleChangeValues({name: 'dateOfBirth', value: text})
-            }
-            text="Date of Birth"
-          />
-          <TextInputs
-            value={nickname}
-            onChange={text =>
-              handleChangeValues({name: 'nickname', value: text})
-            }
-            text="Nickname or known alias"
-          />
+          {itemsTop.map(item => (
+            <TextInputs
+              value={item.value}
+              key={item.id}
+              onChange={item.onChange}
+              text={item.text}
+            />
+          ))}
         </MissingReportWrapper>
         <MissingReportWrapper marginTop={20} text="Physical Description">
-          <TextInputs
-            value={height}
-            onChange={text => handleChangeValues({name: 'height', value: text})}
-            text="Height"
-          />
-          <TextInputs
-            value={weight}
-            onChange={text => handleChangeValues({name: 'weight', value: text})}
-            text="Weight"
-          />
-          <TextInputs
-            value={eyeColor}
-            onChange={text =>
-              handleChangeValues({name: 'eyeColor', value: text})
-            }
-            text="Eye Color"
-          />
-          <TextInputs
-            value={hairColor}
-            onChange={text =>
-              handleChangeValues({name: 'hairColor', value: text})
-            }
-            text="Hair Color"
-          />
-          <TextInputs
-            value={length}
-            onChange={text => handleChangeValues({name: 'length', value: text})}
-            text="Length of Hair"
-          />
-          <TextInputs
-            value={location}
-            onChange={text =>
-              handleChangeValues({name: 'location', value: text})
-            }
-            text="Last seen Location"
-          />
+          {itemsBelow.map(item => (
+            <TextInputs
+              value={item.value}
+              key={item.id}
+              onChange={item.onChange}
+              text={item.text}
+            />
+          ))}
           <DateTimeModal
             modalVisible={show}
             handleModal={() => setShow(prev => !prev)}
@@ -121,9 +60,9 @@ const MissingReport = () => {
           pic={photo}
           handleDelete={handleDeletePhoto}
         />
-        <View style={{borderWidth: 0.5, borderColor: 'black', marginTop: 25}} />
-        <View style={{display: 'flex', alignItems: 'center'}}>
-          <View style={{marginTop: 16, width: 207}}>
+        <View style={styles.line} />
+        <View style={styles.center}>
+          <View style={styles.btnWrap}>
             <Button onPress={handleSubmitReport} loading={loading}>
               {loading ? 'Submitting...' : 'Submit Report'}
             </Button>

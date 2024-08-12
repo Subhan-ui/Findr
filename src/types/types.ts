@@ -26,6 +26,8 @@ type typeFilter = 'male' | 'female' | 'age' | 'all';
 
 export type changeFilter = {changeFilter: (value: typeFilter) => void};
 
+export type filterItemType = {id: number, text: typeFilter, child: string;}
+
 export type logoType = {color: string};
 
 export type user = {
@@ -135,3 +137,10 @@ export type initialTypes = {
   description: string;
   reports: reportsType[];
 };
+
+export type navTypes = {
+  id: number;
+  navigate: 'Home' | 'Reports' | 'MissingReport' | 'Edit';
+  text: string;
+  child: React.ReactNode;
+}[];

@@ -1,8 +1,9 @@
 import {View, Modal, Text, Image, TextInput, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
-import useContact from '../../hooks/missingPersonModal/useContact';
-import {colors} from '../../constants/colors';
+import useContact from './useContact';
+import {colors} from '../../constants/colors/colors';
 import {personType, modalType} from '../../types/types';
+import styles from './MissingPersonModalStyles';
 
 const MissingPersonModal = ({
   modalVisible,
@@ -23,7 +24,8 @@ const MissingPersonModal = ({
     contactViaEmail,
     handleReportFound,
     handleChange,
-  } = useContact(photo, name, age, lastSeen, gender, handleModal);
+    details,
+  } = useContact(photo, name, age, lastSeen, gender, handleModal, location);
 
   return (
     <Modal
@@ -31,108 +33,33 @@ const MissingPersonModal = ({
       transparent={true}
       visible={modalVisible}
       onRequestClose={handleModal}>
-      <View
-        style={{
-          width: '100%',
-          backgroundColor: colors.lightBlack,
-          height: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <View
-          style={{
-            width: '80%',
-            height: 591,
-            backgroundColor: 'white',
-            borderRadius: 8,
-          }}>
+      <View style={styles.surrounding}>
+        <View style={styles.wrapperView}>
           <Icon
             name="cross"
             size={24}
             color="black"
-            style={{position: 'absolute', right: 10, top: 10}}
+            style={styles.crossIcon}
             onPress={handleModal}
           />
-          <View style={{display: 'flex', alignItems: 'center'}}>
-            <Image
-              source={img}
-              style={{
-                width: 100,
-                height: 100,
-                borderRadius: 50,
-                marginTop: 24,
-                marginBottom: 16,
-              }}
-            />
-            <Text
-              style={{
-                fontFamily: 'Familjen Grotesk',
-                fontWeight: '400',
-                fontSize: 14,
-                lineHeight: 17,
-                color: 'black',
-              }}>
-              {name}
-            </Text>
-            <Text
-              style={{
-                fontFamily: 'Familjen Grotesk',
-                fontWeight: '400',
-                fontSize: 14,
-                lineHeight: 17,
-                color: 'black',
-              }}>
-              {age} {gender}
-            </Text>
-            <Text
-              style={{
-                fontFamily: 'Familjen Grotesk',
-                fontWeight: '400',
-                fontSize: 14,
-                lineHeight: 17,
-                color: 'black',
-              }}>
-              Last seen: {lastSeen} IST
-            </Text>
-            <Text
-              style={{
-                fontFamily: 'Familjen Grotesk',
-                fontWeight: '400',
-                fontSize: 14,
-                lineHeight: 17,
-                color: 'black',
-              }}>
-              Last seen location: {location}
-            </Text>
+          <View style={styles.center}>
+            <Image source={img} style={styles.image} />
+            {details.map(detail => (
+              <Text style={styles.text} key={detail.id}>
+                {detail.children}
+              </Text>
+            ))}
           </View>
-          <View style={{marginTop: 16}}>
+          <View style={styles.inputsView}>
             <TextInput
-              style={{
-                marginHorizontal: 16,
-                borderWidth: 1,
-                borderColor: 'black',
-                height: 29,
-                fontSize: 11,
-                padding: 8,
-                borderRadius: 8,
-              }}
+              style={styles.inputLocation}
               placeholder="Location"
               placeholderTextColor="black"
               value={locations}
               onChangeText={text => handleChange('location', text)}
             />
             <TextInput
-              style={{
-                borderWidth: 1,
-                borderColor: 'black',
-                marginHorizontal: 16,
-                borderRadius: 8,
-                marginTop: 16,
-                padding: 8,
-                height: 100,
-                fontSize: 11,
-              }}
+              style={styles.inputDescription}
               multiline={true}
               placeholder="More Description"
               placeholderTextColor="black"
@@ -140,47 +67,17 @@ const MissingPersonModal = ({
               onChangeText={text => handleChange('description', text)}
             />
           </View>
-          <View style={{marginTop: 112, marginHorizontal: 16, display: 'flex'}}>
+          <View style={styles.buttonView}>
             <Pressable
-              style={{
-                borderWidth: 1,
-                borderColor: colors.blue,
-                paddingVertical: 10,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: 8,
-              }}
+              style={styles.buttonEmail}
               onPress={() => contactViaEmail(email)}>
-              <Text
-                style={{
-                  color: colors.blue,
-                  fontFamily: 'Montserrat',
-                  fontWeight: '700',
-                  fontSize: 11,
-                }}>
-                Contact via Email
-              </Text>
+              <Text style={styles.textEmail}>Contact via Email</Text>
             </Pressable>
             <Pressable
-              style={{
-                backgroundColor: colors.blue,
-                paddingVertical: 10,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginTop: 16,
-                borderRadius: 8,
-              }}
+              style={styles.buttonReport}
               onPress={() => handleReportFound(email)}
               disabled={loading}>
-              <Text
-                style={{
-                  color: 'white',
-                  fontFamily: 'Montserrat',
-                  fontWeight: '700',
-                  fontSize: 11,
-                }}>
+              <Text style={styles.textReport}>
                 {loading ? 'Reporting...' : 'Report Found'}
               </Text>
             </Pressable>

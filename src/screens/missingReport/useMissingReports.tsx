@@ -1,5 +1,8 @@
 import {ToastAndroid} from 'react-native';
-import {launchImageLibrary} from 'react-native-image-picker';
+import {
+  ImagePickerResponse,
+  launchImageLibrary,
+} from 'react-native-image-picker';
 import {
   handleChange,
   handleStateNull,
@@ -17,7 +20,7 @@ import {
 } from '../../store/features/missingReportSlice';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {useState} from 'react';
-import useTypeNavigation from '../useTypeNavigation';
+import useTypeNavigation from '../../navigation/useTypeNavigation';
 import {selectUser} from '../../store/features/loginSlice';
 import firestore from '@react-native-firebase/firestore';
 
@@ -95,18 +98,26 @@ const useMissingReport = () => {
   const handleChoosePhoto = async () => {
     try {
       setLoading(true);
-      launchImageLibrary({mediaType: 'photo'}, (response: any) => {
-        if (response?.didCancel) {
-          ToastAndroid.show('User cancelled image picker',ToastAndroid.LONG);
-        } else if (response?.error) {
-          ToastAndroid.show(`Image picker error: ${response?.error}`,ToastAndroid.LONG);
-        } else {
-          let imageUri = response?.uri || response?.assets?.[0]?.uri;
-          setPhoto(imageUri);
-        }
-      });
-    } catch (err:any) {
-      ToastAndroid.show(err?.message,ToastAndroid.LONG);
+      launchImageLibrary(
+        {mediaType: 'photo'},
+        (response: ImagePickerResponse) => {
+          if (response?.didCancel) {
+            ToastAndroid.show('User cancelled image picker', ToastAndroid.LONG);
+          } else if (response?.errorMessage) {
+            ToastAndroid.show(
+              `Image picker error: ${response?.errorMessage}`,
+              ToastAndroid.LONG,
+            );
+          } else {
+            let imageUri = response?.assets?.[0]?.uri;
+            if (imageUri) {
+              setPhoto(imageUri);
+            }
+          }
+        },
+      );
+    } catch (err) {
+      ToastAndroid.show('Some error occured', ToastAndroid.LONG);
     } finally {
       setLoading(false);
     }
@@ -117,23 +128,90 @@ const useMissingReport = () => {
   const handleChangeValues = ({name, value}: {name: string; value: string}) => {
     dispatch(handleChange({name, value}));
   };
+
+  const itemsTop = [
+    {
+      id: 1,
+      value: name,
+      text: "Missing Person's Full Name",
+      onChange: (text: string) =>
+        handleChangeValues({name: 'fullName', value: text}),
+    },
+    {
+      id: 2,
+      value: gender,
+      text: 'Gender',
+      onChange: (text: string) =>
+        handleChangeValues({name: 'gender', value: text}),
+    },
+    {
+      id: 3,
+      value: dateOfBirth,
+      text: 'Date of Birth',
+      onChange: (text: string) =>
+        handleChangeValues({name: 'dateOfBirth', value: text}),
+    },
+    {
+      id: 4,
+      value: nickname,
+      text: 'Nickname or known alias',
+      onChange: (text: string) =>
+        handleChangeValues({name: 'nickname', value: text}),
+    },
+  ];
+
+  const itemsBelow = [
+    {
+      id: 1,
+      value: height,
+      text: 'Height',
+      onChange: (text: string) =>
+        handleChangeValues({name: 'height', value: text}),
+    },
+    {
+      id: 2,
+      value: weight,
+      text: 'Weight',
+      onChange: (text: string) =>
+        handleChangeValues({name: 'weight', value: text}),
+    },
+    {
+      id: 3,
+      value: eyeColor,
+      text: 'Eye Color',
+      onChange: (text: string) =>
+        handleChangeValues({name: 'eyeColor', value: text}),
+    },
+    {
+      id: 4,
+      value: hairColor,
+      text: 'Hair Color',
+      onChange: (text: string) =>
+        handleChangeValues({name: 'hairColor', value: text}),
+    },
+    {
+      id: 5,
+      value: length,
+      text: 'Length of Hair',
+      onChange: (text: string) =>
+        handleChangeValues({name: 'length', value: text}),
+    },
+    {
+      id: 6,
+      value: location,
+      text: 'Last Seen Location',
+      onChange: (text: string) =>
+        handleChangeValues({name: 'location', value: text}),
+    },
+  ];
   return {
     handleChoosePhoto,
     handleDeletePhoto,
-    handleChangeValues,
     handleSubmitReport,
+    itemsTop,
+    itemsBelow,
     loading,
     photo,
-    name,
-    gender,
-    dateOfBirth,
-    nickname,
-    height,
-    weight,
-    eyeColor,
-    hairColor,
-    length,
-    location,
   };
 };
 

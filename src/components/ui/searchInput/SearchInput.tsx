@@ -5,6 +5,7 @@ import {
   handleChangeQuery,
   selectQuery,
 } from '../../../store/features/missingReportSlice';
+import styles from './SearchInputStyles';
 
 const SearchInput = ({marginHorizontal}: {marginHorizontal: number}) => {
   const search = useAppSelector(selectQuery);
@@ -14,23 +15,10 @@ const SearchInput = ({marginHorizontal}: {marginHorizontal: number}) => {
       <TextInput
         value={search}
         onChangeText={text => dispatch(handleChangeQuery(text))}
-        style={{
-          borderWidth: 1,
-          borderColor: 'gray',
-          borderRadius: 8,
-          marginVertical: 8,
-          height: 36,
-          paddingLeft: 16,
-          paddingVertical: 11,
-        }}
+        style={styles.textInput}
         placeholder="Search"
       />
-      <Icon
-        name="search"
-        size={19}
-        color="black"
-        style={{position: 'absolute', right: 28, top: 17}}
-      />
+      <Icon name="search" size={19} color="black" style={styles.icon} />
     </View>
   );
 };

@@ -1,110 +1,32 @@
 import {View, Text, ScrollView} from 'react-native';
-import {changeFilter} from '../../types/types';
+import {changeFilter, filterItemType} from '../../types/types';
+import styles from './FilterStyles';
 
 const Filter = ({changeFilter}: changeFilter) => {
+  const items: filterItemType[] = [
+    {id: 1, text: 'all', child: 'All'},
+    {id: 2, text: 'male', child: 'Male'},
+    {id: 3, text: 'female', child: 'Female'},
+    {id: 4, text: 'age', child: 'Age'},
+    {id: 5, text: 'age', child: 'Age'},
+  ];
   return (
     <>
-      <View
-        style={{
-          marginTop: 30,
-          marginHorizontal: 20,
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}>
-        <Text
-          style={{
-            color: 'black',
-            fontFamily: 'Familjen Grotesk',
-            fontSize: 14,
-            fontWeight: '500',
-          }}>
-          Filter By:
-        </Text>
-        <ScrollView horizontal style={{display: 'flex', flexDirection: 'row'}}>
-          <View
-            style={{
-              height: 36,
-              width: 57,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginLeft: 16,
-            }}>
-            <Text
-              onPress={() => changeFilter('all')}
-              style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
-              All
-            </Text>
-          </View>
-          <View
-            style={{
-              height: 36,
-              width: 57,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginLeft: 16,
-            }}>
-            <Text
-              onPress={() => changeFilter('male')}
-              style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
-              Male
-            </Text>
-          </View>
-          <View
-            style={{
-              height: 36,
-              width: 57,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginLeft: 16,
-            }}>
-            <Text
-              onPress={() => changeFilter('female')}
-              style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
-              Female
-            </Text>
-          </View>
-          <View
-            style={{
-              height: 36,
-              width: 57,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginLeft: 16,
-            }}>
-            <Text style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
-              Trans
-            </Text>
-          </View>
-          <View
-            style={{
-              height: 36,
-              width: 57,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginLeft: 16,
-            }}>
-            <Text
-              onPress={() => changeFilter('age')}
-              style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
-              Age
-            </Text>
-          </View>
+      <View style={styles.wrapperView}>
+        <Text style={styles.filterText}>Filter By:</Text>
+        <ScrollView horizontal style={styles.row}>
+          {items.map(item => (
+            <View style={styles.filterItem}>
+              <Text
+                onPress={() => changeFilter(item.text)}
+                style={styles.filterItemText}>
+                {item.child}
+              </Text>
+            </View>
+          ))}
         </ScrollView>
       </View>
-      <View
-        style={{
-          marginTop: 20,
-          borderWidth: 0.5,
-          borderColor: 'gray',
-          width: '100%',
-        }}
-      />
+      <View style={styles.underline} />
     </>
   );
 };

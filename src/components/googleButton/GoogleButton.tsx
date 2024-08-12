@@ -1,34 +1,15 @@
-import {View, ToastAndroid, Pressable, Image} from 'react-native';
-import useLogin from '../../hooks/login/useLogin';
-import {colors} from '../../constants/colors';
+import {View, Pressable, Image} from 'react-native';
+import useLogin from '../../screens/login/useLogin';
+import styles from './GoogleButtonStyles';
 
 const GoogleButton = () => {
   const {onGoogleButtonPress} = useLogin();
   return (
-    <View style={{display: 'flex', alignItems: 'center', marginTop: 27}}>
-      <Pressable
-        onPress={() =>
-          onGoogleButtonPress()
-            .then(() => {
-              ToastAndroid.show('User Singed in', ToastAndroid.LONG);
-            })
-            .catch(error => {
-              ToastAndroid.show(error + '', ToastAndroid.LONG);
-            })
-        }
-        style={{
-          borderWidth: 1,
-          borderColor: colors.darkBlue,
-          height: 57,
-          width: 60,
-          borderRadius: 12,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
+    <View style={styles.wrapperView}>
+      <Pressable onPress={() => onGoogleButtonPress()} style={styles.imageView}>
         <Image
-          source={require('../../assets/icons/images/Google.png')}
-          style={{height: 34, width: 34}}
+          source={require('../../constants/images/icons/images/Google.png')}
+          style={styles.image}
         />
       </Pressable>
     </View>

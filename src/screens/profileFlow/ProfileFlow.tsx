@@ -6,27 +6,20 @@ import {
   ProfileCard,
   Navbar,
 } from '../../components';
-import useHandleFlow from '../../hooks/profileFlow/useHandleFlow';
+import useHandleFlow from './useHandleFlow';
+import styles from './ProfileFlowStyles';
 
 const ProfileFlow = () => {
   const {change, dataF} = useHandleFlow();
 
   return (
     <View>
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: 8,
-          alignItems: 'center',
-          marginTop: 8,
-          marginLeft: 26,
-        }}>
+      <View style={styles.headerWrap}>
         <TopBar text="All Missing Person" />
       </View>
       <SearchInput marginHorizontal={20} />
       <Filter changeFilter={change} />
-      <ScrollView style={{height: '62%'}}>
+      <ScrollView style={styles.scroll}>
         {dataF?.map(data => (
           <ProfileCard
             key={data?.id}

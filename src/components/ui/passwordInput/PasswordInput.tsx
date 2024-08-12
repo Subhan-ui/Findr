@@ -1,32 +1,10 @@
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {View, Text, TextInput} from 'react-native';
 import {useAppDispatch, useAppSelector} from '../../../store/hooks';
 import {
   handleChangePassword,
   selectPassword,
 } from '../../../store/features/loginSlice';
-import { colors } from '../../../constants/colors';
-
-const styles = StyleSheet.create({
-  nameInput: {
-    marginBottom: 6,
-    fontWeight: '500',
-    color: colors.black,
-  },
-  Input: {
-    borderWidth: 2,
-    borderColor: colors.gray,
-    paddingLeft: 14,
-    paddingRight: 14,
-    paddingTop: 10,
-    paddingBottom: 10,
-    height: 44,
-    borderRadius: 8,
-  },
-  textAddress: {
-    fontSize: 14,
-    color: colors.darkGray,
-  },
-});
+import styles from './PasswordInputStyle';
 
 const PasswordInput = () => {
   const password = useAppSelector(selectPassword);

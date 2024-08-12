@@ -1,79 +1,37 @@
 import {View, Text, Image, ScrollView, SafeAreaView} from 'react-native';
-import useTypeNavigation from '../../hooks/useTypeNavigation';
-import useGetReports from '../../hooks/home/useGetReports';
-import {Logo, Card, Navbar, SearchInput,} from '../../components'
-import { colors } from '../../constants/colors';
+import useTypeNavigation from '../../navigation/useTypeNavigation';
+import useGetReports from './useGetReports';
+import {Logo, Card, Navbar, SearchInput} from '../../components';
+import {colors} from '../../constants/colors/colors';
+import styles from './HomeStyles';
 
 const Home = () => {
   const navigation = useTypeNavigation();
   const {data} = useGetReports();
   return (
     <ScrollView alwaysBounceVertical={true}>
-      <View style={{display: 'flex', alignItems: 'center', marginTop: 8}}>
+      <View style={styles.logoWrap}>
         <Logo color={colors.blue} />
       </View>
       <SearchInput marginHorizontal={45} />
-      <View style={{display: 'flex', alignItems: 'center', marginTop: 43}}>
-        <Image source={require('../../assets/icons/images/homeSlider.png')} />
+      <View style={styles.imageWrap}>
+        <Image
+          source={require('../../constants/images/icons/images/homeSlider.png')}
+        />
       </View>
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginHorizontal: 20,
-          marginTop: 27,
-          paddingRight: 9,
-        }}>
-        <Text
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '400',
-            fontSize: 23,
-            color: 'black',
-          }}>
-          Featured Profiles
-        </Text>
+      <View style={styles.barWrap}>
+        <Text style={styles.heading}>Featured Profiles</Text>
         <Text
           onPress={() => data?.length !== 0 && navigation.navigate('Profile')}
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '400',
-            fontSize: 16,
-            color: colors.darkBlue,
-            textDecorationLine: 'underline',
-          }}>
+          style={styles.headingUnderline}>
           See More
         </Text>
       </View>
       <SafeAreaView>
-        <ScrollView
-          horizontal={true}
-          style={{
-            marginHorizontal: 20,
-            display: 'flex',
-            flexDirection: 'row',
-            marginTop: 12,
-            height: 304,
-          }}>
+        <ScrollView horizontal={true} style={styles.ScrollHorizon}>
           {data?.length === 0 ? (
-            <View
-              style={{
-                height: 300,
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Text
-                style={{
-                  color: 'black',
-                  fontFamily: 'Montserrat',
-                  fontWeight: '600',
-                }}>
-                NO Missing Person yet
-              </Text>
+            <View style={styles.noPerson}>
+              <Text style={styles.noPersonText}>NO Missing Person yet</Text>
             </View>
           ) : (
             data?.map(da => (

@@ -1,44 +1,28 @@
 import {Image, Text, View} from 'react-native';
-import usePassword from '../../hooks/forgotPassword/usePassword';
+import usePassword from './usePassword';
 import {EmailButton, Button, TopBar} from '../../components';
-import { colors } from '../../constants/colors';
+import styles from './ForgotPasswordStyles';
 
 const ForgotPassword = () => {
   const {handleForgotPassword} = usePassword();
   return (
-    <View style={{marginHorizontal: 33}}>
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: 8,
-          alignItems: 'center',
-          marginTop: 60,
-          marginLeft: 14,
-        }}>
+    <View style={styles.wrapper}>
+      <View style={styles.header}>
         <TopBar text="Forgot Password" />
       </View>
-      <View style={{marginTop: 56}}>
+      <View style={styles.imageWrap}>
         <Image
-          source={require('../../assets/icons/images/forgotPassword.png')}
+          source={require('../../constants/images/icons/images/forgotPassword.png')}
         />
       </View>
-      <View style={{marginTop: 34}}>
-        <Text
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '400',
-            fontSize: 16,
-            textAlign: 'center',
-            lineHeight: 19,
-            color: colors.shady,
-          }}>
+      <View style={styles.textWrap}>
+        <Text style={styles.text}>
           Please enter the email address associated with your account. We'll
           send you a verification code to reset your password.
         </Text>
       </View>
       <EmailButton />
-      <View style={{marginTop: 10}}>
+      <View style={styles.buttonWrap}>
         <Button onPress={() => handleForgotPassword()}>Send Reset Code</Button>
       </View>
     </View>

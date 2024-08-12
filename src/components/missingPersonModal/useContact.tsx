@@ -16,6 +16,7 @@ const useContact = (
   lastSeen: string,
   gender: string,
   handleModal: () => void,
+  location: string,
 ) => {
   const img = {uri: photo};
   const locations = useAppSelector(selectLocation);
@@ -77,11 +78,19 @@ const useContact = (
         );
       });
   };
+
+  const details = [
+    {id: 1, children: name},
+    {id: 2, children: `${age} ${gender}`},
+    {id: 3, children: `Last seen: ${lastSeen} IST`},
+    {id: 4, children: `Last seen location: ${location}`},
+  ];
   return {
     loading,
     img,
     locations,
     description,
+    details,
     contactViaEmail,
     handleReportFound,
     handleChange,

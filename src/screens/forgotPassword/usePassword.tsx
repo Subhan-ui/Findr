@@ -1,5 +1,5 @@
 import {ToastAndroid} from 'react-native';
-import useTypeNavigation from '../useTypeNavigation';
+import useTypeNavigation from '../../navigation/useTypeNavigation';
 import {selectEmail} from '../../store/features/loginSlice';
 import {useAppSelector} from '../../store/hooks';
 import auth from '@react-native-firebase/auth';

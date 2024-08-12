@@ -54,7 +54,14 @@ const useLogin = () => {
     const googleCredential = auth.GoogleAuthProvider.credential(
       userInfo.idToken,
     );
-    return auth().signInWithCredential(googleCredential);
+    auth()
+      .signInWithCredential(googleCredential)
+      .then(() => {
+        ToastAndroid.show('User Singed in', ToastAndroid.LONG);
+      })
+      .catch(error => {
+        ToastAndroid.show(error + '', ToastAndroid.LONG);
+      });
   }
   return {onGoogleButtonPress, onEmailSignIn, loading};
 };

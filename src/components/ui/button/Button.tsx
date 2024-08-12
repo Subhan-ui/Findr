@@ -1,34 +1,17 @@
-import {Pressable, StyleSheet, Text} from 'react-native';
-import { colors } from '../../../constants/colors';
-import { btnType } from '../../../types/types';
+import {Pressable, Text} from 'react-native';
+import {colors} from '../../../constants/colors/colors';
+import {btnType} from '../../../types/types';
+import styles from './ButtonStyles';
 
-const Button = ({
-  children,
-  onPress,
-  loading,
-}: btnType) => {
-  const styles = StyleSheet.create({
-    view: {
-      width: '100%',
-      backgroundColor: loading ? colors.blueDisabled : colors.blue,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingTop: 12,
-      paddingBottom: 12,
-      paddingLeft: 16,
-      paddingRight: 16,
-      borderRadius: 8,
-    },
-    text: {
-      color: 'white',
-      fontWeight: '600',
-      fontSize: 23,
-      fontFamily: 'Familjen Grotesk',
-    },
-  });
+const Button = ({children, onPress, loading}: btnType) => {
   return (
-    <Pressable onPress={onPress} style={styles.view} disabled={loading}>
+    <Pressable
+      onPress={onPress}
+      style={[
+        styles.view,
+        {backgroundColor: loading ? colors.blueDisabled : colors.blue},
+      ]}
+      disabled={loading}>
       <Text style={styles.text}>{children}</Text>
     </Pressable>
   );

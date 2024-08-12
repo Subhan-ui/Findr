@@ -1,22 +1,11 @@
 import {View, Text} from 'react-native';
-import { wrapper } from '../../types/types';
+import {wrapper} from '../../types/types';
+import styles from './MissingReportWrapperStyles';
 
-const MissingReportWrapper = ({
-  text,
-  children,
-  marginTop
-}: wrapper) => {
+const MissingReportWrapper = ({text, children, marginTop}: wrapper) => {
   return (
-    <View style={{marginTop:marginTop}}>
-      <Text
-        style={{
-          fontFamily: 'Familjen Grotesk',
-          fontSize: 23,
-          fontWeight: '400',
-          color: 'black',
-        }}>
-        {text}
-      </Text>
+    <View style={{marginTop: marginTop}}>
+      <Text style={styles.text}>{text}</Text>
       {children}
     </View>
   );

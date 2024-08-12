@@ -1,7 +1,8 @@
 import {View, Text, Image, Pressable, Linking} from 'react-native';
-import { colors } from '../../constants/colors';
-import { reportType } from '../../types/types';
-import useEmail from '../../hooks/contactEmail/useEmail';
+import {colors} from '../../constants/colors/colors';
+import {reportType} from '../../types/types';
+import useEmail from './useEmail';
+import styles from './MissingReportStyles';
 
 const MissingReport = ({
   name,
@@ -11,67 +12,25 @@ const MissingReport = ({
   email,
   photo,
 }: reportType) => {
-  const {contactViaEmail} = useEmail(email)
+  const {contactViaEmail} = useEmail(email);
+  const details = [
+    {id: 1, child: `Name: ${name}`},
+    {id: 2, child: `Reported By: ${reportedBy}`},
+    {id: 3, child: `Location: ${location}`},
+    {id: 4, child: `Description: ${description}`},
+  ];
 
   return (
-    <View style={{marginTop: 40, display: 'flex', flexDirection: 'row'}}>
-      <Image source={{uri: photo}} style={{height: 154, width: 115}} />
-      <View style={{marginLeft: 8, marginRight: 20}}>
-        <Text
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '400',
-            fontSize: 16,
-            lineHeight: 24,
-            color: 'black',
-          }}>
-          Name: {name}
-        </Text>
-        <Text
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '400',
-            fontSize: 16,
-            lineHeight: 24,
-            color: 'black',
-          }}>
-          Reported By: {reportedBy}
-        </Text>
-        <Text
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '400',
-            fontSize: 16,
-            lineHeight: 24,
-            color: 'black',
-            width: 200,
-          }}>
-          Location: {location}
-        </Text>
-        <Text
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '400',
-            fontSize: 16,
-            lineHeight: 24,
-            color: 'black',
-            width: 230,
-          }}>
-          Description: {description}
-        </Text>
-        <Pressable
-          style={{
-            marginTop: 12,
-            backgroundColor: colors.blue,
-            borderRadius: 8,
-            width: 101,
-            height: 24,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          onPress={contactViaEmail}>
-          <Text style={{color: 'white', fontSize: 11}}>Contact Person</Text>
+    <View style={styles.wrapperView}>
+      <Image source={{uri: photo}} style={styles.image} />
+      <View style={styles.detailWrapper}>
+        {details.map(detail => (
+          <Text style={styles.text} key={detail.id}>
+            {detail.child}
+          </Text>
+        ))}
+        <Pressable style={styles.button} onPress={contactViaEmail}>
+          <Text style={styles.buttonText}>Contact Person</Text>
         </Pressable>
       </View>
     </View>

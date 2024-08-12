@@ -7,7 +7,7 @@ import {
   handleChangeName,
 } from '../../store/features/loginSlice';
 import {ToastAndroid} from 'react-native';
-import useTypeNavigation from '../useTypeNavigation';
+import useTypeNavigation from '../../navigation/useTypeNavigation';
 import auth from '@react-native-firebase/auth';
 
 const useRegister = () => {

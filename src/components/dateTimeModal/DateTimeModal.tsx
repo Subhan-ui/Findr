@@ -1,4 +1,4 @@
-
+import styles from './DateTimeModalStyles';
 import {Pressable, Text, View} from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
@@ -6,34 +6,18 @@ import {
   selectDate,
   handleChangeDate,
 } from '../../store/features/missingReportSlice';
-import { colors } from '../../constants/colors';
-import { modalType } from '../../types/types';
+import {modalType} from '../../types/types';
 
-const DateTimeModal = ({
-  modalVisible,
-  handleModal,
-}: modalType) => {
+const DateTimeModal = ({modalVisible, handleModal}: modalType) => {
   const dateISO = useAppSelector(selectDate);
   const date = new Date(dateISO);
   const dispatch = useAppDispatch();
   return (
     <>
-      <View style={{marginTop: 16}}>
-        <Text style={{fontWeight: '500', fontSize: 14, color: 'black'}}>
-          Last Seen
-        </Text>
-        <Pressable
-          onPress={handleModal}
-          style={{
-            borderWidth: 2,
-            borderColor: colors.gray,
-            height: 44,
-            borderRadius: 8,
-            display: 'flex',
-            justifyContent: 'center',
-            paddingLeft: 14,
-          }}>
-          <Text style={{color: 'black'}}>{date.toLocaleString()}</Text>
+      <View style={styles.wrapperView}>
+        <Text style={styles.text}>Last Seen</Text>
+        <Pressable onPress={handleModal} style={styles.button}>
+          <Text style={styles.black}>{date.toLocaleString()}</Text>
         </Pressable>
       </View>
       <DatePicker

@@ -1,31 +1,18 @@
 import {ScrollView, Text, View} from 'react-native';
-import useReports from '../../hooks/reports/useReports';
+import useReports from './useReports';
 import {TopBar, Navbar, MissingReport} from '../../components';
+import styles from './ReportStyles';
 
 const Reports = () => {
   const {reports} = useReports();
   return (
     <>
-      <ScrollView style={{marginHorizontal: 20}}>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginTop: 18,
-            gap: 8,
-          }}>
+      <ScrollView style={styles.wrap}>
+        <View style={styles.barWrap}>
           <TopBar text="Reports" />
         </View>
         {reports?.length === 0 ? (
-          <View
-            style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+          <View style={styles.noReport}>
             <Text>No Reports yet</Text>
           </View>
         ) : (
@@ -42,14 +29,7 @@ const Reports = () => {
           ))
         )}
       </ScrollView>
-      <View
-        style={{
-          position: 'absolute',
-          bottom: 1,
-          display: 'flex',
-          alignItems: 'center',
-          width: '100%',
-        }}>
+      <View style={styles.footerWrap}>
         <Navbar />
       </View>
     </>

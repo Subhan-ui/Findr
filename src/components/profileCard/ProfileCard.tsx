@@ -2,7 +2,8 @@ import {View, Image, Text} from 'react-native';
 import MissingPersonModal from '../missingPersonModal/MissingPersonModal';
 import {personType} from '../../types/types';
 import ViewButton from '../viewButton/ViewButton';
-import useHandleProfile from '../../hooks/profileCard/useHandleProfile';
+import useHandleProfile from './useHandleProfile';
+import styles from './ProfileCardStyles';
 
 const ProfileCard = ({
   name,
@@ -18,15 +19,14 @@ const ProfileCard = ({
     lastSeen,
     photo,
   );
+  const items = [
+    {id: 1, text: `Name: ${name}`},
+    {id: 2, text: `Age: ${age} (${gender})`},
+    {id: 3, text: `Last Seen: ${time} IST`},
+    {id: 4, text: `Last Seen Location: ${location}`},
+  ];
   return (
-    <View
-      style={{
-        marginTop: 16,
-        height: 154,
-        marginHorizontal: 21,
-        display: 'flex',
-        flexDirection: 'row',
-      }}>
+    <View style={styles.wrapperView}>
       <MissingPersonModal
         modalVisible={modalVisible}
         handleModal={handleModal}
@@ -39,48 +39,13 @@ const ProfileCard = ({
         email={email}
         postDate={postDate}
       />
-      <Image source={img} width={115} height={154} style={{borderRadius: 4}} />
-      <View style={{marginLeft: 8}}>
-        <Text
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '400',
-            fontSize: 16,
-            color: 'black',
-            lineHeight: 24,
-          }}>
-          Name: {name}
-        </Text>
-        <Text
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '400',
-            fontSize: 16,
-            color: 'black',
-            lineHeight: 24,
-          }}>
-          Age: {age} ({gender})
-        </Text>
-        <Text
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '400',
-            fontSize: 16,
-            color: 'black',
-            lineHeight: 24,
-          }}>
-          Last Seen: {time} IST
-        </Text>
-        <Text
-          style={{
-            fontFamily: 'Familjen Grotesk',
-            fontWeight: '400',
-            fontSize: 16,
-            color: 'black',
-            lineHeight: 24,
-          }}>
-          Last Seen Location: {location}
-        </Text>
+      <Image source={img} width={115} height={154} style={styles.image} />
+      <View style={styles.left}>
+        {items.map(item => (
+          <Text key={item.id} style={styles.text}>
+            {item.text}
+          </Text>
+        ))}
         <ViewButton handleModal={handleModal} text="Details" width={93} />
       </View>
     </View>

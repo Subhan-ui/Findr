@@ -2,7 +2,10 @@ import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {ToastAndroid} from 'react-native';
 import {useState} from 'react';
 import auth from '@react-native-firebase/auth';
-import {launchImageLibrary} from 'react-native-image-picker';
+import {
+  launchImageLibrary,
+  ImagePickerResponse,
+} from 'react-native-image-picker';
 import {
   handleChangeName,
   handleUserNull,
@@ -28,21 +31,27 @@ const useEdit = () => {
   const handleChoosePhoto = async () => {
     try {
       setLoading(true);
-      launchImageLibrary({mediaType: 'photo'}, (response: any) => {
-        if (response?.didCancel) {
-          ToastAndroid.show('User cancelled image picker', ToastAndroid.LONG);
-        } else if (response?.error) {
-          ToastAndroid.show(
-            `Image picker error:  ${response?.error}`,
-            ToastAndroid.LONG,
-          );
-        } else {
-          let imageUri = response?.uri || response?.assets?.[0]?.uri;
-          setPhoto(imageUri);
-        }
-      });
-    } catch (err: any) {
-      ToastAndroid.show(err.message, ToastAndroid.LONG);
+      launchImageLibrary(
+        {mediaType: 'photo'},
+        (response: ImagePickerResponse) => {
+          if (response?.didCancel) {
+            ToastAndroid.show('User cancelled image picker', ToastAndroid.LONG);
+          } else if (response?.errorMessage) {
+            ToastAndroid.show(
+              `Image picker error:  ${response?.errorMessage}`,
+              ToastAndroid.LONG,
+            );
+          } else {
+            let imageUri = response?.assets?.[0]?.uri;
+            if(imageUri){
+
+              setPhoto(imageUri);
+            }
+          }
+        },
+      );
+    } catch (err) {
+      ToastAndroid.show(err + '', ToastAndroid.LONG);
     } finally {
       setLoading(false);
     }
