@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import NavButton from '../navButton/NavButton';
+import NavButton from '../ui/navButton/NavButton';
 import items from './useNavbar';
 import styles from './NavbarStyles';
 
