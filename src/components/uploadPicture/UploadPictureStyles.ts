@@ -20,19 +20,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  view: {display: 'flex', flexDirection: 'row', gap: 2, },
+  view: {display: 'flex', flexDirection: 'row', gap: 2},
   textBlack: {
     fontFamily: 'Familjen Grotesk',
     fontSize: 16,
     fontWeight: '400',
     color: 'black',
-  }, 
+  },
   textBlue: {
     fontFamily: 'Familjen Grotesk',
     fontSize: 16,
     fontWeight: '400',
     color: colors.blue,
-  }, 
+  },
   smallText: {
     fontFamily: 'Familjen Grotesk',
     fontSize: 11,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 4,
   },
-  image: {height: 154, width: 115, borderRadius: 4}
+  image: {height: 154, width: 115, borderRadius: 4},
 });
 
 export default styles;

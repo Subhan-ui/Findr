@@ -1,6 +1,12 @@
 import {Linking} from 'react-native';
 
-const useEmail = (email: string) => {
+const useEmail = (
+  email: string,
+  name: string,
+  reportedBy: string,
+  location: string,
+  description: string,
+) => {
   const contactViaEmail = () => {
     const emailUrl = `mailto:${email}`;
     Linking.canOpenURL(emailUrl)
@@ -14,7 +20,13 @@ const useEmail = (email: string) => {
         );
       });
   };
-  return {contactViaEmail};
+  const details = [
+    {id: 1, child: `Name: ${name}`},
+    {id: 2, child: `Reported By: ${reportedBy}`},
+    {id: 3, child: `Location: ${location}`},
+    {id: 4, child: `Description: ${description}`},
+  ];
+  return {contactViaEmail, details};
 };
 
 export default useEmail;

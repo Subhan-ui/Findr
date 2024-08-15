@@ -15,16 +15,14 @@ const ProfileCard = ({
   email,
   postDate,
 }: personType) => {
-  const {time, img, modalVisible, handleModal} = useHandleProfile(
+  const {time, items, img, modalVisible, handleModal} = useHandleProfile(
     lastSeen,
     photo,
+    name,
+    age,
+    gender,
+    location,
   );
-  const items = [
-    {id: 1, text: `Name: ${name}`},
-    {id: 2, text: `Age: ${age} (${gender})`},
-    {id: 3, text: `Last Seen: ${time} IST`},
-    {id: 4, text: `Last Seen Location: ${location}`},
-  ];
   return (
     <View style={styles.wrapperView}>
       <MissingPersonModal

@@ -43,8 +43,7 @@ const useEdit = () => {
             );
           } else {
             let imageUri = response?.assets?.[0]?.uri;
-            if(imageUri){
-
+            if (imageUri) {
               setPhoto(imageUri);
             }
           }

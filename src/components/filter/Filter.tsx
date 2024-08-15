@@ -1,15 +1,9 @@
 import {View, Text, ScrollView} from 'react-native';
-import {changeFilter, filterItemType} from '../../types/types';
+import {changeFilter} from '../../types/types';
 import styles from './FilterStyles';
+import { items } from '../../constants/contents';
 
 const Filter = ({changeFilter}: changeFilter) => {
-  const items: filterItemType[] = [
-    {id: 1, text: 'all', child: 'All'},
-    {id: 2, text: 'male', child: 'Male'},
-    {id: 3, text: 'female', child: 'Female'},
-    {id: 4, text: 'age', child: 'Age'},
-    {id: 5, text: 'age', child: 'Age'},
-  ];
   return (
     <>
       <View style={styles.wrapperView}>

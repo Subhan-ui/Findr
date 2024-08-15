@@ -7,7 +7,7 @@ export {default as Logo} from './logo/Logo';
 export {default as MissingPersonModal} from './missingPersonModal/MissingPersonModal';
 export {default as MissingReport} from './missingReport/MissingReport';
 export {default as MissingReportWrapper} from './missingReportWrapper/MissingReportWrapper';
-export {default as Navbar} from './navbar/navbar/Navbar';
+export {default as Navbar} from './navbar/Navbar';
 export {default as ProfileCard} from './profileCard/ProfileCard';
 export {default as RegistrationForm} from './registrationForm/RegistrationForm';
 export {default as TopBar} from './topBar/TopBar';

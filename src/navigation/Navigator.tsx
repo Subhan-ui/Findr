@@ -1,15 +1,4 @@
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {navigatorTypes} from '../types/types';
-import {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from '../store/hooks';
-import auth from '@react-native-firebase/auth';
-import {
-  handleChangeEmail,
-  handleChangeName,
-  handleUser,
-  selectUser,
-} from '../store/features/loginSlice';
 import {StatusBar} from 'react-native';
 import {
   Home,
@@ -22,30 +11,10 @@ import {
   SplashScreen,
   Reports,
 } from '../screens';
+import {useNavigations} from './useTypeNavigation';
 
 const Navigator = () => {
-  const dispatch = useAppDispatch();
-  const user = useAppSelector(selectUser);
-  const Stack = createNativeStackNavigator<navigatorTypes>();
-
-  useEffect(() => {
-    const unsubscribe = auth().onAuthStateChanged(fUser => {
-      if (fUser) {
-        dispatch(
-          handleUser({
-            displayName: fUser.displayName,
-            email: fUser.email,
-            photoURL: fUser.photoURL,
-            uid: fUser.uid,
-          }),
-        );
-        dispatch(handleChangeName(fUser.displayName || ''));
-        dispatch(handleChangeEmail(fUser.email || ''));
-      }
-    });
-
-    return () => unsubscribe();
-  }, [dispatch]);
+  const {Stack, user} = useNavigations();
 
   return (
     <NavigationContainer>

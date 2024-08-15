@@ -1,7 +1,6 @@
 import {View, Modal, Text, Image, TextInput, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import useContact from './useContact';
-import {colors} from '../../constants/colors/colors';
 import {personType, modalType} from '../../types/types';
 import styles from './MissingPersonModalStyles';
 

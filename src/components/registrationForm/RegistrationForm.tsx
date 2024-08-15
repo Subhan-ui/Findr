@@ -1,4 +1,4 @@
-import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {Pressable, SafeAreaView, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Button from '../ui/button/Button';
@@ -6,7 +6,6 @@ import EmailButton from '../ui/emailButton/EmailButton';
 import PasswordInput from '../ui/passwordInput/PasswordInput';
 import TextInputs from '../ui/textInput/TextInput';
 import useRegister from './useRegister';
-import {colors} from '../../constants/colors/colors';
 import styles from './RegistrationFormStyles';
 
 const RegistrationForm = () => {

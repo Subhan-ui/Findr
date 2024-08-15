@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
 import {logoType} from '../../types/types';
 import styles from './LogoStyles';
 

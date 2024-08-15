@@ -1,5 +1,4 @@
-import {View, Text, Image, Pressable, Linking} from 'react-native';
-import {colors} from '../../constants/colors/colors';
+import {View, Text, Image, Pressable} from 'react-native';
 import {reportType} from '../../types/types';
 import useEmail from './useEmail';
 import styles from './MissingReportStyles';
@@ -12,13 +11,13 @@ const MissingReport = ({
   email,
   photo,
 }: reportType) => {
-  const {contactViaEmail} = useEmail(email);
-  const details = [
-    {id: 1, child: `Name: ${name}`},
-    {id: 2, child: `Reported By: ${reportedBy}`},
-    {id: 3, child: `Location: ${location}`},
-    {id: 4, child: `Description: ${description}`},
-  ];
+  const {contactViaEmail, details} = useEmail(
+    email,
+    name,
+    reportedBy,
+    location,
+    description,
+  );
 
   return (
     <View style={styles.wrapperView}>

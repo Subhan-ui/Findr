@@ -1,5 +1,9 @@
 import {useEffect} from 'react';
-import {handleChangeQuery, handleData, selectSearchData} from '../../store/features/missingReportSlice';
+import {
+  handleChangeQuery,
+  handleData,
+  selectSearchData,
+} from '../../store/features/missingReportSlice';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import firestore from '@react-native-firebase/firestore';
 
@@ -29,7 +33,7 @@ const useGetReports = () => {
           };
         });
         dispatch(handleData(data));
-        dispatch(handleChangeQuery(''))
+        dispatch(handleChangeQuery(''));
       })
       .catch(error => {
         console.error('Error fetching reports:', error);
