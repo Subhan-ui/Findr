@@ -5,13 +5,13 @@ const styles = StyleSheet.create({
   wrapperView: {marginTop: 16},
   text: {fontWeight: '500', fontSize: 14, color: 'black'},
   textInput: {
-    borderWidth: 2,
-    borderColor: colors.gray,
     paddingLeft: 14,
     paddingRight: 14,
     paddingTop: 10,
     paddingBottom: 10,
     height: 44,
+    borderWidth: 2,
+    borderColor: colors.gray,
     borderRadius: 8,
   },
 });

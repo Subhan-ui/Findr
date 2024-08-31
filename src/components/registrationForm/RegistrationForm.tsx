@@ -5,7 +5,7 @@ import Button from '../ui/button/Button';
 import EmailButton from '../ui/emailButton/EmailButton';
 import PasswordInput from '../ui/passwordInput/PasswordInput';
 import TextInputs from '../ui/textInput/TextInput';
-import useRegister from './useRegister';
+import useRegister from './useRegisterForm';
 import styles from './RegistrationFormStyles';
 
 const RegistrationForm = () => {

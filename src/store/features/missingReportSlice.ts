@@ -3,7 +3,7 @@ import {personType, initialType as initialTypes} from '../../types/types';
 
 const initialState: initialTypes = {
   fullName: '',
-  gender: 'male',
+  gender: 'Male',
   dateOfBirth: '',
   nickname: '',
   height: '',
@@ -39,7 +39,7 @@ const missingReportSlice = createSlice({
       state.dateOfBirth = '';
       state.eyeColor = '';
       state.fullName = '';
-      state.gender = 'male';
+      state.gender = 'Male';
       state.hairColor = '';
       state.height = '';
       state.weight = '';
@@ -89,7 +89,9 @@ const missingReportSlice = createSlice({
         state.searchedData = state.data;
       } else {
         const filterData = state.data?.filter(data =>
-          data?.name.toLowerCase().startsWith(state.searchedQuery.toLowerCase()),
+          data?.name
+            .toLowerCase()
+            .startsWith(state.searchedQuery.toLowerCase()),
         );
         state.searchedData = filterData;
       }

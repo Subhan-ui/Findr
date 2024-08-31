@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
 import { colors } from "../../constants/colors/colors";
+import { hp } from "../../constants/contents";
 
 const styles = StyleSheet.create({
-    wrapperView: {display: 'flex', alignItems: 'center', marginTop: 27},
+    wrapperView: {display: 'flex', alignItems: 'center', marginTop: hp(1)},
     imageView: {
         borderWidth: 1,
         borderColor: colors.darkBlue,

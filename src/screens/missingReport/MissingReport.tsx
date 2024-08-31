@@ -10,6 +10,8 @@ import {
   MissingReportWrapper,
 } from '../../components';
 import styles from './MissingReportStyles';
+import GenderDropdown from '../../components/ui/dropdown/Dropdown';
+import { allItems } from '../../constants/contents';
 
 const MissingReport = () => {
   const [show, setShow] = useState(false);
@@ -17,11 +19,17 @@ const MissingReport = () => {
     handleChoosePhoto,
     handleDeletePhoto,
     handleSubmitReport,
+    name,
+    handleChangeValues,
     loading,
-    itemsTop,
-    itemsBelow,
     photo,
+    gender,
+    isDropdownOpen,
+    genderOptions,
+    handleSelectGender,
+    dropdownOpen,
   } = useMissingReports();
+  const {itemsTop, itemsBelow} = allItems();
 
   return (
     <ScrollView>
@@ -32,6 +40,20 @@ const MissingReport = () => {
         <MissingReportWrapper
           marginTop={40}
           text="Basic Details of Missing Person">
+          <TextInputs
+            value={name}
+            onChange={(text: string) =>
+              handleChangeValues({name: 'fullName', value: text})
+            }
+            text="Missing Person's Full Name"
+          />
+          <GenderDropdown
+            selectedGender={gender}
+            isDropdownOpen={isDropdownOpen}
+            options={genderOptions}
+            handleSelectGender={handleSelectGender}
+            dropDownOpen={dropdownOpen}
+          />
           {itemsTop.map(item => (
             <TextInputs
               value={item.value}

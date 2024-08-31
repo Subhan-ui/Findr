@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 import NavButton from '../ui/navButton/NavButton';
-import items from './useNavbar';
+import { navItems as items } from '../../constants/contents';
 import styles from './NavbarStyles';
 
 const Navbar = () => (

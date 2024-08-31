@@ -23,6 +23,7 @@ import {useState} from 'react';
 import useTypeNavigation from '../../navigation/useTypeNavigation';
 import {selectUser} from '../../store/features/loginSlice';
 import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 
 const useMissingReport = () => {
   const name = useAppSelector(selectFullName);
@@ -42,8 +43,25 @@ const useMissingReport = () => {
   const [loading, setLoading] = useState(false);
   const [photo, setPhoto] = useState<string | null>(null);
   const date = useAppSelector(selectDate);
+  const [namepic, setName] = useState<string | null>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleSubmitReport = () => {
+  const genderOptions = ['Male', 'Female', 'Rather not to say'];
+
+  const handleSelectGender = (some: string) => {
+    handleChangeValues({name: 'gender', value: some});
+    setIsDropdownOpen(false);
+  };
+
+  const uploadImage = async () => {
+    if (namepic && photo) {
+      const reference = storage().ref(namepic);
+      const pathToFile = photo;
+      await reference.putFile(pathToFile);
+    }
+  };
+
+  const handleSubmitReport = async () => {
     const condition =
       name.length > 0 &&
       gender.length > 0 &&
@@ -56,6 +74,12 @@ const useMissingReport = () => {
       length.length > 0;
     if (condition) {
       setLoading(true);
+      let url = null;
+      if (namepic && photo) {
+        await uploadImage();
+        url = await storage().ref(namepic).getDownloadURL();
+      }
+
       const data = {
         name,
         gender,
@@ -69,9 +93,10 @@ const useMissingReport = () => {
         email,
         date,
         location,
-        photo,
+        photo: url,
         postedDate: new Date().toLocaleString(),
       };
+
       firestore()
         .collection('Reports')
         .add(data)
@@ -110,8 +135,10 @@ const useMissingReport = () => {
             );
           } else {
             let imageUri = response?.assets?.[0]?.uri;
-            if (imageUri) {
+            let imageName = response?.assets?.[0]?.fileName;
+            if (imageUri && imageName) {
               setPhoto(imageUri);
+              setName(imageName);
             }
           }
         },
@@ -129,89 +156,20 @@ const useMissingReport = () => {
     dispatch(handleChange({name, value}));
   };
 
-  const itemsTop = [
-    {
-      id: 1,
-      value: name,
-      text: "Missing Person's Full Name",
-      onChange: (text: string) =>
-        handleChangeValues({name: 'fullName', value: text}),
-    },
-    {
-      id: 2,
-      value: gender,
-      text: 'Gender',
-      onChange: (text: string) =>
-        handleChangeValues({name: 'gender', value: text}),
-    },
-    {
-      id: 3,
-      value: dateOfBirth,
-      text: 'Date of Birth',
-      onChange: (text: string) =>
-        handleChangeValues({name: 'dateOfBirth', value: text}),
-    },
-    {
-      id: 4,
-      value: nickname,
-      text: 'Nickname or known alias',
-      onChange: (text: string) =>
-        handleChangeValues({name: 'nickname', value: text}),
-    },
-  ];
-
-  const itemsBelow = [
-    {
-      id: 1,
-      value: height,
-      text: 'Height',
-      onChange: (text: string) =>
-        handleChangeValues({name: 'height', value: text}),
-    },
-    {
-      id: 2,
-      value: weight,
-      text: 'Weight',
-      onChange: (text: string) =>
-        handleChangeValues({name: 'weight', value: text}),
-    },
-    {
-      id: 3,
-      value: eyeColor,
-      text: 'Eye Color',
-      onChange: (text: string) =>
-        handleChangeValues({name: 'eyeColor', value: text}),
-    },
-    {
-      id: 4,
-      value: hairColor,
-      text: 'Hair Color',
-      onChange: (text: string) =>
-        handleChangeValues({name: 'hairColor', value: text}),
-    },
-    {
-      id: 5,
-      value: length,
-      text: 'Length of Hair',
-      onChange: (text: string) =>
-        handleChangeValues({name: 'length', value: text}),
-    },
-    {
-      id: 6,
-      value: location,
-      text: 'Last Seen Location',
-      onChange: (text: string) =>
-        handleChangeValues({name: 'location', value: text}),
-    },
-  ];
+  const dropdownOpen = () => setIsDropdownOpen(!isDropdownOpen);
   return {
     handleChoosePhoto,
     handleDeletePhoto,
     handleSubmitReport,
-    itemsTop,
-    itemsBelow,
+    handleChangeValues,
+    name,
     loading,
     photo,
+    gender,
+    isDropdownOpen,
+    genderOptions,
+    handleSelectGender,
+    dropdownOpen,
   };
 };
 

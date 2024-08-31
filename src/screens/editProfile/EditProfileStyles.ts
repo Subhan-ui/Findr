@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  wrapper: {height: 812},
+  wrapper: {height: '100%'},
   headerView: {
     display: 'flex',
     flexDirection: 'row',

@@ -1,6 +1,6 @@
 import {View, Text, Image, ScrollView, SafeAreaView} from 'react-native';
 import useTypeNavigation from '../../navigation/useTypeNavigation';
-import useGetReports from './useGetReports';
+import useGetReports from './useHome';
 import {Logo, Card, Navbar, SearchInput} from '../../components';
 import {colors} from '../../constants/colors/colors';
 import styles from './HomeStyles';
@@ -16,7 +16,7 @@ const Home = () => {
       <SearchInput marginHorizontal={45} />
       <View style={styles.imageWrap}>
         <Image
-          source={require('../../constants/images/icons/images/homeSlider.png')}
+          source={require('../../constants/images/images/homeSlider.png')}
         />
       </View>
       <View style={styles.barWrap}>
@@ -37,7 +37,7 @@ const Home = () => {
             data?.map(da => (
               <Card
                 postDate={da?.postDate}
-                key={da?.id}
+                key={da?.postDate}
                 name={da?.name}
                 age={da?.age}
                 location={da?.location}

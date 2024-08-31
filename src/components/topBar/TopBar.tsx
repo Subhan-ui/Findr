@@ -2,7 +2,7 @@ import {Text} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {textType} from '../../types/types';
 import styles from './TopBarStyles';
-import goBackComp from './goBack';
+import goBackComp from './useTopBar';
 
 const TopBar = ({text}: textType) => {
   const {goBack} = goBackComp();

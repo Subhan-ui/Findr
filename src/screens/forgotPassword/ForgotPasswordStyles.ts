@@ -1,18 +1,19 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../constants/colors/colors';
+import { hp, wp } from '../../constants/contents';
 
 const styles = StyleSheet.create({
-  wrapper: {marginHorizontal: 33},
+  wrapper: {marginHorizontal: wp(8)},
   header: {
     display: 'flex',
     flexDirection: 'row',
     gap: 8,
     alignItems: 'center',
-    marginTop: 60,
+    marginTop: hp(9),
     marginLeft: 14,
   },
-  imageWrap: {marginTop: 56},
-  textWrap: {marginTop: 34},
+  imageWrap: {marginTop: hp(7.5)},
+  textWrap: {marginTop: hp(4.5)},
   text: {
     fontFamily: 'Familjen Grotesk',
     fontWeight: '400',

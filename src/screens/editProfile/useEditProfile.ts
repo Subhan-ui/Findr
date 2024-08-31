@@ -7,6 +7,7 @@ import {
   ImagePickerResponse,
 } from 'react-native-image-picker';
 import {
+  handleChangeEmail,
   handleChangeName,
   handleUserNull,
   selectName,
@@ -26,6 +27,9 @@ const useEdit = () => {
         ToastAndroid.show('User Signed Out', ToastAndroid.LONG);
         dispatch(handleUserNull());
       });
+
+      dispatch(handleChangeEmail(''))
+      dispatch(handleChangeName(''))
   };
 
   const handleChoosePhoto = async () => {

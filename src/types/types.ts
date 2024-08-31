@@ -26,7 +26,7 @@ type typeFilter = 'male' | 'female' | 'age' | 'all';
 
 export type changeFilter = {changeFilter: (value: typeFilter) => void};
 
-export type filterItemType = {id: number, text: typeFilter, child: string;}
+export type filterItemType = {id: number; text: typeFilter; child: string};
 
 export type logoType = {color: string};
 
@@ -46,7 +46,7 @@ export type stateTypes = {
 
 export type initialType = {
   fullName: string;
-  gender: 'male' | 'female';
+  gender: 'Male' | 'Female' | 'Rather not to say';
   dateOfBirth: string;
   nickname: string;
   height: string;

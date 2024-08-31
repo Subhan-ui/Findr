@@ -1,12 +1,15 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../constants/colors/colors';
+import {hp, wp, scaleFont} from '../../constants/contents';
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 55,
-    marginLeft: 34,
-    marginRight: 34,
-    height: '100%',
+    flex: 1,
+    marginTop: hp(6),
+    marginLeft: wp(8),
+    marginRight: wp(8),
   },
+  content: {flex: 1},
   logoWrap: {
     display: 'flex',
     alignItems: 'center',
@@ -14,38 +17,50 @@ const styles = StyleSheet.create({
   heading: {
     fontFamily: 'Familjen Grotesk',
     fontWeight: '700',
-    fontSize: 45,
+    fontSize: scaleFont(48),
     color: 'black',
-    marginTop: 24,
+    marginTop: hp(2.5),
   },
-  buttonWrap: {marginTop: 34},
+  buttonWrap: {
+    marginTop: hp(4),
+  },
   options: {
     display: 'flex',
     flexDirection: 'row',
-    gap: 10,
+    gap: wp(2),
     justifyContent: 'center',
-    marginTop: 21,
+    marginTop: hp(3),
   },
   optionsText: {
     fontFamily: 'Familjen Grotesk',
-    fontSize: 11,
+    fontSize: scaleFont(11),
     fontWeight: '400',
     color: 'black',
-    lineHeight: 13,
+    lineHeight: scaleFont(13),
   },
   or: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 16,
-    marginTop: 28,
+    marginVertical: hp(1),
+    marginTop: hp(3),
   },
-  orLine: {flex: 1, height: 1, backgroundColor: '#d0d2d7'},
+  orLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: colors.line,
+  },
+  textOr: {
+    marginHorizontal: wp(7),
+    color: 'black',
+    fontFamily: 'Familjen Grotesk',
+    fontSize: scaleFont(16),
+  },
   footer: {
     position: 'absolute',
-    bottom: 50,
-    left: 0,
-    right: 0,
-    alignItems: 'center',
+    bottom: 0,
+    marginHorizontal: 'auto',
+    left: wp(20),
+    right: wp(20),
   },
 });
 

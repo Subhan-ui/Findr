@@ -7,7 +7,7 @@ const Registration = () => (
     <View style={styles.imageView}>
       <Image
         style={styles.image}
-        source={require('../../constants/images/icons/patterns/registration.png')}
+        source={require('../../constants/images/patterns/registration.png')}
       />
     </View>
     <View style={styles.textWrap}>

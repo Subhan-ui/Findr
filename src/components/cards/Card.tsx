@@ -2,7 +2,7 @@ import {View, Text, Image} from 'react-native';
 import {personType} from '../../types/types';
 import MissingPersonModal from '../missingPersonModal/MissingPersonModal';
 import ViewButton from '../viewButton/ViewButton';
-import useHandleCard from './useHandleCard';
+import useHandleCard from './useCard';
 import styles from './CardStyles';
 
 const Card = ({
@@ -37,7 +37,7 @@ const Card = ({
       <View>
         <Image source={img} style={styles.imagePerson} />
         <Image
-          source={require('../../constants/images/icons/images/blank.png')}
+          source={require('../../constants/images/images/blank.png')}
           style={styles.blankImg}
         />
         <View style={styles.wrapperContent}>

@@ -2,7 +2,7 @@ import {View, Text, KeyboardAvoidingView} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/Ionicons';
 import useTypeNavigation from '../../navigation/useTypeNavigation';
-import useEdit from './useEdit';
+import useEdit from './useEditProfile';
 import {
   TextInputs,
   Button,

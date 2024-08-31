@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../constants/colors/colors';
+import { hp, scaleFont } from '../../constants/contents';
 
 const styles = StyleSheet.create({
   imageView: {
@@ -8,7 +9,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   image: {
-    height: 128,
+    height: hp(18),
   },
   textWrap: {
     position: 'relative',
@@ -19,13 +20,13 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'Familjen Grotesk',
     color: colors.blue,
-    fontSize: 64,
+    fontSize: scaleFont(66),
     fontWeight: '700',
   },
   secText: {
     fontWeight: '400',
     color: colors.black,
-    fontSize: 23,
+    fontSize: scaleFont(24),
     fontFamily: 'Familjen Grotesk',
   },
 });

@@ -8,7 +8,7 @@ const GoogleButton = () => {
     <View style={styles.wrapperView}>
       <Pressable onPress={() => onGoogleButtonPress()} style={styles.imageView}>
         <Image
-          source={require('../../constants/images/icons/images/Google.png')}
+          source={require('../../constants/images/images/Google.png')}
           style={styles.image}
         />
       </Pressable>

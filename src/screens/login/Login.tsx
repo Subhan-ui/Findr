@@ -1,4 +1,4 @@
-import {Image, Text, View} from 'react-native';
+import {Image, ScrollView, Text, View} from 'react-native';
 import useTypeNavigation from '../../navigation/useTypeNavigation';
 import useLogin from './useLogin';
 import {
@@ -16,8 +16,8 @@ const Login = () => {
   const {onEmailSignIn, loading} = useLogin();
 
   return (
-    <>
-      <View style={styles.wrapper}>
+    <View style={styles.wrapper}>
+      <View style={styles.content}>
         <View style={styles.logoWrap}>
           <Logo color={colors.blue} />
         </View>
@@ -44,25 +44,17 @@ const Login = () => {
         </View>
         <View style={styles.or}>
           <View style={styles.orLine} />
-          <Text
-            style={{
-              marginHorizontal: 29,
-              color: '#000',
-              fontFamily: 'Familjen Grotesk',
-              fontSize: 16,
-            }}>
-            or
-          </Text>
+          <Text style={styles.textOr}>or</Text>
           <View style={styles.orLine} />
         </View>
         <GoogleButton />
         <View style={styles.footer}>
           <Image
-            source={require('../../constants/images/icons/patterns/login.png')}
+            source={require('../../constants/images/patterns/login.png')}
           />
         </View>
       </View>
-    </>
+    </View>
   );
 };
 

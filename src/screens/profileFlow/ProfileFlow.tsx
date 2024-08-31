@@ -6,7 +6,7 @@ import {
   ProfileCard,
   Navbar,
 } from '../../components';
-import useHandleFlow from './useHandleFlow';
+import useHandleFlow from './useProfileFlow';
 import styles from './ProfileFlowStyles';
 
 const ProfileFlow = () => {

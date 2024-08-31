@@ -1,5 +1,5 @@
 import {Image, Text, View} from 'react-native';
-import usePassword from './usePassword';
+import usePassword from './useForgotPassword';
 import {EmailButton, Button, TopBar} from '../../components';
 import styles from './ForgotPasswordStyles';
 
@@ -12,7 +12,7 @@ const ForgotPassword = () => {
       </View>
       <View style={styles.imageWrap}>
         <Image
-          source={require('../../constants/images/icons/images/forgotPassword.png')}
+          source={require('../../constants/images/images/forgotPassword.png')}
         />
       </View>
       <View style={styles.textWrap}>
