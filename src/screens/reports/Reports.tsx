@@ -18,7 +18,7 @@ const Reports = () => {
         ) : (
           reports?.map(report => (
             <MissingReport
-              key={report?.id}
+              key={report?.postDate}
               name={report?.name}
               reportedBy={report?.reportedBy}
               location={report?.location}

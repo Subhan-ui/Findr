@@ -58,9 +58,10 @@ const styles = StyleSheet.create({
   footer: {
     position: 'absolute',
     bottom: 0,
-    marginHorizontal: 'auto',
-    left: wp(20),
-    right: wp(20),
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    paddingVertical: hp(0),
   },
 });
 

@@ -22,7 +22,7 @@ const ProfileFlow = () => {
       <ScrollView style={styles.scroll}>
         {dataF?.map(data => (
           <ProfileCard
-            key={data?.id}
+            key={data?.postDate}
             postDate={data?.postDate}
             name={data?.name}
             age={data?.age}

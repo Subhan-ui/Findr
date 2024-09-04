@@ -9,7 +9,8 @@ const Home = () => {
   const navigation = useTypeNavigation();
   const {data} = useGetReports();
   return (
-    <ScrollView alwaysBounceVertical={true}>
+    <View >
+      <ScrollView style={{marginBottom: 91}}>
       <View style={styles.logoWrap}>
         <Logo color={colors.blue} />
       </View>
@@ -50,9 +51,13 @@ const Home = () => {
           )}
         </ScrollView>
       </SafeAreaView>
+      </ScrollView>
+      <View style={{position:'absolute', bottom: 0, zIndex: 5000, backgroundColor: 'white', left:0, right: 0, height: 89, }}>
       <Navbar />
-    </ScrollView>
+      </View>
+    </View>
   );
 };
+
 
 export default Home;

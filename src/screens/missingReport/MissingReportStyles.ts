@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   line: {borderWidth: 0.5, borderColor: 'black', marginTop: 25},
   center: {display: 'flex', alignItems: 'center'},
-  btnWrap: {marginTop: 16, width: 207},
+  btnWrap: {marginVertical: 16, width: 207},
 });
 
 export default styles;

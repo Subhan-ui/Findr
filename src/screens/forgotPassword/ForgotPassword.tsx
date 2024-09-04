@@ -1,4 +1,4 @@
-import {Image, Text, View} from 'react-native';
+import {Image, ScrollView, Text, View} from 'react-native';
 import usePassword from './useForgotPassword';
 import {EmailButton, Button, TopBar} from '../../components';
 import styles from './ForgotPasswordStyles';
@@ -6,7 +6,7 @@ import styles from './ForgotPasswordStyles';
 const ForgotPassword = () => {
   const {handleForgotPassword} = usePassword();
   return (
-    <View style={styles.wrapper}>
+    <ScrollView style={styles.wrapper}>
       <View style={styles.header}>
         <TopBar text="Forgot Password" />
       </View>
@@ -25,7 +25,7 @@ const ForgotPassword = () => {
       <View style={styles.buttonWrap}>
         <Button onPress={() => handleForgotPassword()}>Send Reset Code</Button>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
