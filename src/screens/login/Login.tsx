@@ -1,7 +1,17 @@
 import React from 'react';
-import {Image, ScrollView, Text, View, KeyboardAvoidingView, Platform} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  Text,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
+
 import useTypeNavigation from '../../navigation/useTypeNavigation';
 import useLogin from './useLogin';
+import {colors} from '../../constants/colors/colors';
+import styles from './LoginStyles';
 import {
   Logo,
   EmailButton,
@@ -9,8 +19,6 @@ import {
   Button,
   GoogleButton,
 } from '../../components';
-import {colors} from '../../constants/colors/colors';
-import styles from './LoginStyles';
 
 const Login = () => {
   const navigation = useTypeNavigation();
@@ -20,13 +28,11 @@ const Login = () => {
     <KeyboardAvoidingView
       style={styles.wrapper}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 20 : 0}
-    >
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 20 : 0}>
       <ScrollView
         contentContainerStyle={{flexGrow: 1}}
         bounces={false}
-        keyboardShouldPersistTaps="handled"
-      >
+        keyboardShouldPersistTaps="handled">
         <View style={styles.content}>
           <View style={styles.logoWrap}>
             <Logo color={colors.blue} />
@@ -60,7 +66,9 @@ const Login = () => {
           <GoogleButton />
         </View>
         <View style={styles.footer}>
-          <Image source={require('../../constants/images/patterns/login.png')} />
+          <Image
+            source={require('../../constants/images/patterns/login.png')}
+          />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

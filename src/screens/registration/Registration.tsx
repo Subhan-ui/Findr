@@ -1,6 +1,7 @@
 import {Image, View, Text, ScrollView} from 'react-native';
-import {RegistrationForm} from '../../components';
+
 import styles from './RegistrationStyles';
+import {RegistrationForm} from '../../components';
 
 const Registration = () => (
   <ScrollView>

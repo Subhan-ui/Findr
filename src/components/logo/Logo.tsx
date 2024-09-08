@@ -1,4 +1,5 @@
 import {View, Text} from 'react-native';
+
 import {logoType} from '../../types/types';
 import styles from './LogoStyles';
 

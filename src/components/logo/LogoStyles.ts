@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+
 import { scaleFont, wp } from '../../constants/contents';
 
 const styles = StyleSheet.create({

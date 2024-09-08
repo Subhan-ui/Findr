@@ -1,6 +1,7 @@
-import styles from './DateTimeModalStyles';
 import {Pressable, Text, View} from 'react-native';
 import DatePicker from 'react-native-date-picker';
+
+import styles from './DateTimeModalStyles';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {
   selectDate,

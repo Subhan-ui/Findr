@@ -1,6 +1,7 @@
 import {View, Text, ScrollView} from 'react-native';
-import {changeFilter} from '../../types/types';
+
 import styles from './FilterStyles';
+import {changeFilter} from '../../types/types';
 import { items } from '../../constants/contents';
 
 const Filter = ({changeFilter}: changeFilter) => {

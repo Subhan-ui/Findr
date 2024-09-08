@@ -1,4 +1,8 @@
 import {useNavigation, NavigationProp} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useEffect} from 'react';
+import auth from '@react-native-firebase/auth';
+
 import {navigatorTypes} from '../types/types';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {
@@ -7,9 +11,6 @@ import {
   handleUser,
   selectUser,
 } from '../store/features/loginSlice';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useEffect} from 'react';
-import auth from '@react-native-firebase/auth';
 
 export const useNavigations = () => {
   const dispatch = useAppDispatch();

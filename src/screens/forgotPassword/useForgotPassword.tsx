@@ -1,8 +1,9 @@
 import {ToastAndroid} from 'react-native';
+import auth from '@react-native-firebase/auth';
+
 import useTypeNavigation from '../../navigation/useTypeNavigation';
 import {selectEmail} from '../../store/features/loginSlice';
 import {useAppSelector} from '../../store/hooks';
-import auth from '@react-native-firebase/auth';
 
 const usePassword = () => {
   const email = useAppSelector(selectEmail);

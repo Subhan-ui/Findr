@@ -144,3 +144,9 @@ export type navTypes = {
   text: string;
   child: React.ReactNode;
 }[];
+
+export type navigation = {
+  id: number;
+  name: keyof navigatorTypes;
+  component: React.ComponentType<any>;
+}[]

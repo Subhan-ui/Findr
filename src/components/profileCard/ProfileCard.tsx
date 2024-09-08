@@ -1,9 +1,10 @@
 import {View, Image, Text} from 'react-native';
+
+import styles from './ProfileCardStyles';
 import MissingPersonModal from '../missingPersonModal/MissingPersonModal';
-import {personType} from '../../types/types';
 import ViewButton from '../viewButton/ViewButton';
 import useHandleProfile from './useProfileCard';
-import styles from './ProfileCardStyles';
+import {personType} from '../../types/types';
 
 const ProfileCard = ({
   name,

@@ -1,17 +1,9 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
-import {
-  Home,
-  EditProfile,
-  ForgotPassword,
-  Login,
-  MissingReport,
-  ProfileFlow,
-  Registration,
-  SplashScreen,
-  Reports,
-} from '../screens';
+
+import {navigationLogged, navigationLog} from '../constants/contents';
 import {useNavigations} from './useTypeNavigation';
+import {SplashScreen} from '../screens';
 
 const Navigator = () => {
   const {Stack, user} = useNavigations();
@@ -25,54 +17,23 @@ const Navigator = () => {
           component={SplashScreen}
           options={{headerShown: false}}
         />
-        {user ? (
-          <>
-            <Stack.Screen
-              name="Home"
-              component={Home}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Edit"
-              component={EditProfile}
-              options={{headerShown: false}}
-            />
-
-            <Stack.Screen
-              name="MissingReport"
-              component={MissingReport}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Profile"
-              component={ProfileFlow}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Reports"
-              component={Reports}
-              options={{headerShown: false}}
-            />
-          </>
-        ) : (
-          <>
-            <Stack.Screen
-              name="Login"
-              component={Login}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Register"
-              component={Registration}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="ForgotPassword"
-              component={ForgotPassword}
-              options={{headerShown: false}}
-            />
-          </>
-        )}
+        {user
+          ? navigationLogged.map(nav => (
+              <Stack.Screen
+                key={nav.id}
+                name={nav.name}
+                component={nav.component}
+                options={{headerShown: false}}
+              />
+            ))
+          : navigationLog.map(nav => (
+              <Stack.Screen
+                key={nav.id}
+                name={nav.name}
+                component={nav.component}
+                options={{headerShown: false}}
+              />
+            ))}
       </Stack.Navigator>
     </NavigationContainer>
   );

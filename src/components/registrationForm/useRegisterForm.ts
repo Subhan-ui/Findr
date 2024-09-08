@@ -1,4 +1,8 @@
 import {useState} from 'react';
+import auth from '@react-native-firebase/auth';
+import {ToastAndroid} from 'react-native';
+
+import useTypeNavigation from '../../navigation/useTypeNavigation';
 import {useAppSelector, useAppDispatch} from '../../store/hooks';
 import {
   selectName,
@@ -6,9 +10,6 @@ import {
   selectPassword,
   handleChangeName,
 } from '../../store/features/loginSlice';
-import {ToastAndroid} from 'react-native';
-import useTypeNavigation from '../../navigation/useTypeNavigation';
-import auth from '@react-native-firebase/auth';
 
 const useRegister = () => {
   const navigation = useTypeNavigation();

@@ -1,4 +1,5 @@
 import {ScrollView, Text, View} from 'react-native';
+
 import useReports from './useReports';
 import {TopBar, Navbar, MissingReport} from '../../components';
 import styles from './ReportStyles';

@@ -1,6 +1,6 @@
+import styles from './MissingReportWrapperStyles';
 import {View, Text} from 'react-native';
 import {wrapper} from '../../types/types';
-import styles from './MissingReportWrapperStyles';
 
 const MissingReportWrapper = ({text, children, marginTop}: wrapper) => {
   return (

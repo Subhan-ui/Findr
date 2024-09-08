@@ -1,6 +1,10 @@
 import {ScrollView, View} from 'react-native';
 import {useState} from 'react';
+
+import styles from './MissingReportStyles';
 import useMissingReports from './useMissingReports';
+import GenderDropdown from '../../components/ui/dropdown/Dropdown';
+import { allItems } from '../../constants/contents';
 import {
   TopBar,
   TextInputs,
@@ -9,9 +13,6 @@ import {
   DateTimeModal,
   MissingReportWrapper,
 } from '../../components';
-import styles from './MissingReportStyles';
-import GenderDropdown from '../../components/ui/dropdown/Dropdown';
-import { allItems } from '../../constants/contents';
 
 const MissingReport = () => {
   const [show, setShow] = useState(false);

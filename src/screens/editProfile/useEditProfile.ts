@@ -1,4 +1,3 @@
-import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {ToastAndroid} from 'react-native';
 import {useState} from 'react';
 import auth from '@react-native-firebase/auth';
@@ -6,6 +5,8 @@ import {
   launchImageLibrary,
   ImagePickerResponse,
 } from 'react-native-image-picker';
+
+import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {
   handleChangeEmail,
   handleChangeName,

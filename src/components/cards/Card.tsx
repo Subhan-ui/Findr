@@ -1,9 +1,10 @@
 import {View, Text, Image} from 'react-native';
-import {personType} from '../../types/types';
+
 import MissingPersonModal from '../missingPersonModal/MissingPersonModal';
 import ViewButton from '../viewButton/ViewButton';
 import useHandleCard from './useCard';
 import styles from './CardStyles';
+import {personType} from '../../types/types';
 
 const Card = ({
   name,

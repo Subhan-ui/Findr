@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+
 import {colors} from '../../constants/colors/colors';
 import { hp, scaleFont } from '../../constants/contents';
 

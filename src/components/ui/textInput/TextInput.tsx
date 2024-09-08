@@ -1,6 +1,7 @@
 import {View, Text, TextInput} from 'react-native';
-import {inputType} from '../../../types/types';
+
 import styles from './TextInputStyles';
+import {inputType} from '../../../types/types';
 
 const TextInputs = ({text, value, onChange}: inputType) => (
   <View style={styles.wrapperView}>

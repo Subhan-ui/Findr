@@ -1,4 +1,7 @@
 import {ScrollView, View} from 'react-native';
+
+import styles from './ProfileFlowStyles';
+import useHandleFlow from './useProfileFlow';
 import {
   TopBar,
   SearchInput,
@@ -6,8 +9,6 @@ import {
   ProfileCard,
   Navbar,
 } from '../../components';
-import useHandleFlow from './useProfileFlow';
-import styles from './ProfileFlowStyles';
 
 const ProfileFlow = () => {
   const {change, dataF} = useHandleFlow();

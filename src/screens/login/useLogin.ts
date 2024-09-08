@@ -1,9 +1,10 @@
 import {useState, useEffect} from 'react';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {useAppSelector} from '../../store/hooks';
-import {selectEmail, selectPassword} from '../../store/features/loginSlice';
 import auth from '@react-native-firebase/auth';
 import {ToastAndroid} from 'react-native';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+
+import {useAppSelector} from '../../store/hooks';
+import {selectEmail, selectPassword} from '../../store/features/loginSlice';
 
 const useLogin = () => {
   const [loading, setLoading] = useState(false);

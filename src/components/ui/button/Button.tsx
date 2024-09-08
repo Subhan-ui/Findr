@@ -1,7 +1,8 @@
 import {Pressable, Text} from 'react-native';
+
+import styles from './ButtonStyles';
 import {colors} from '../../../constants/colors/colors';
 import {btnType} from '../../../types/types';
-import styles from './ButtonStyles';
 
 const Button = ({children, onPress, loading}: btnType) => {
   return (

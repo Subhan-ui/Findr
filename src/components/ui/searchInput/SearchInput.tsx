@@ -1,11 +1,12 @@
 import {View, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
+
+import styles from './SearchInputStyles';
 import {useAppDispatch, useAppSelector} from '../../../store/hooks';
 import {
   handleChangeQuery,
   selectQuery,
 } from '../../../store/features/missingReportSlice';
-import styles from './SearchInputStyles';
 
 const SearchInput = ({marginHorizontal}: {marginHorizontal: number}) => {
   const search = useAppSelector(selectQuery);

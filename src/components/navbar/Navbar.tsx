@@ -1,7 +1,8 @@
 import {View} from 'react-native';
+
+import styles from './NavbarStyles';
 import NavButton from '../ui/navButton/NavButton';
 import { navItems as items } from '../../constants/contents';
-import styles from './NavbarStyles';
 
 const Navbar = () => (
   <View style={styles.wrapperView}>

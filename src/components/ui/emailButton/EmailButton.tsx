@@ -1,11 +1,12 @@
 import {View, Text, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+import styles from './EmailButtonStyle';
 import {useAppDispatch, useAppSelector} from '../../../store/hooks';
 import {
   handleChangeEmail,
   selectEmail,
 } from '../../../store/features/loginSlice';
-import styles from './EmailButtonStyle';
 
 const EmailButton = ({hide}: {hide?: boolean}) => {
   const email = useAppSelector(selectEmail);

@@ -1,6 +1,8 @@
 import {View, Text, KeyboardAvoidingView} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/Ionicons';
+
+import styles from './EditProfileStyles';
 import useTypeNavigation from '../../navigation/useTypeNavigation';
 import useEdit from './useEditProfile';
 import {
@@ -9,7 +11,6 @@ import {
   EmailButton,
   EditProfileImage,
 } from '../../components';
-import styles from './EditProfileStyles';
 
 const EditProfile = () => {
   const navigation = useTypeNavigation();

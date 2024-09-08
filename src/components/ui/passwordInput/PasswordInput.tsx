@@ -1,10 +1,11 @@
 import {View, Text, TextInput} from 'react-native';
+
+import styles from './PasswordInputStyle';
 import {useAppDispatch, useAppSelector} from '../../../store/hooks';
 import {
   handleChangePassword,
   selectPassword,
 } from '../../../store/features/loginSlice';
-import styles from './PasswordInputStyle';
 
 const PasswordInput = () => {
   const password = useAppSelector(selectPassword);

@@ -1,9 +1,10 @@
 import {View, Text, Image, ScrollView, SafeAreaView} from 'react-native';
+
+import styles from './HomeStyles';
 import useTypeNavigation from '../../navigation/useTypeNavigation';
 import useGetReports from './useHome';
 import {Logo, Card, Navbar, SearchInput} from '../../components';
 import {colors} from '../../constants/colors/colors';
-import styles from './HomeStyles';
 
 const Home = () => {
   const navigation = useTypeNavigation();

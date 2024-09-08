@@ -1,6 +1,7 @@
 import {Pressable, Text} from 'react-native';
-import {viewBtnType} from '../../types/types';
+
 import styles from './ViewButtonStyles';
+import {viewBtnType} from '../../types/types';
 
 const ViewButton = ({handleModal, text, width}: viewBtnType) => {
   return (
