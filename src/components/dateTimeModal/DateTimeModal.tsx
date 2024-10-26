@@ -22,7 +22,7 @@ const DateTimeModal = ({modalVisible, handleModal}: modalType) => {
         </Pressable>
       </View>
       <DatePicker
-        modal
+          
         open={modalVisible}
         date={date}
         onConfirm={(selectedDate: Date) => {

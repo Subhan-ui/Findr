@@ -1,9 +1,9 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
 
-import {navigationLogged, navigationLog} from '../constants/contents';
+import {navigationLogged, navigationLog} from '../constants/navigations';
 import {useNavigations} from './useTypeNavigation';
-import {SplashScreen} from '../screens';
+import SplashScreen from '../screens/splashScreen/SplashScreen';
 
 const Navigator = () => {
   const {Stack, user} = useNavigations();
