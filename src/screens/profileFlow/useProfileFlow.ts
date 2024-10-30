@@ -5,7 +5,7 @@ import {
   handleChangeQuery,
   handleFilter,
   selectSearchData,
-} from '../../store/features/missingReportSlice';
+} from '../../store/slices/missingReport.slice';
 
 type typeFilter = 'male' | 'female' | 'age' | 'all';
 

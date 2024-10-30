@@ -5,6 +5,7 @@ import ViewButton from '../viewButton/ViewButton';
 import useHandleCard from './useCard';
 import styles from './CardStyles';
 import {personType} from '../../types/types';
+import {blank} from '../../constants/images';
 
 const Card = ({
   name,
@@ -37,10 +38,7 @@ const Card = ({
       </View>
       <View>
         <Image source={img} style={styles.imagePerson} />
-        <Image
-          source={require('../../constants/images/images/blank.png')}
-          style={styles.blankImg}
-        />
+        <Image source={blank} style={styles.blankImg} />
         <View style={styles.wrapperContent}>
           <Text style={styles.white}>Name: {name}</Text>
           <Text style={styles.white}>

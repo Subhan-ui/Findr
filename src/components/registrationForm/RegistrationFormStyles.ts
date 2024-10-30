@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 import {colors} from '../../constants/colors/colors';
-import { hp, wp, scaleFont } from '../../constants/contents';
+import { hp, wp, scaleFont } from '../../constants/constants';
 
 const styles = StyleSheet.create({
   safeArea: {

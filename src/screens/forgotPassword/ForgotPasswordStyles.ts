@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 import {colors} from '../../constants/colors/colors';
-import { hp, wp } from '../../constants/contents';
+import { hp, wp } from '../../constants/constants';
 
 const styles = StyleSheet.create({
   wrapper: {marginHorizontal: wp(8)},

@@ -148,5 +148,5 @@ export type navTypes = {
 export type navigation = {
   id: number;
   name: keyof navigatorTypes;
-  component: React.ComponentType<any>;
+  component: React.ComponentType;
 }[]

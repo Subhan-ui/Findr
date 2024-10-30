@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 import {colors} from '../../constants/colors/colors';
-import { hp, scaleFont } from '../../constants/contents';
+import { hp, scaleFont } from '../../constants/constants';
 
 const styles = StyleSheet.create({
   imageView: {

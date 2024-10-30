@@ -4,7 +4,7 @@ import {useState} from 'react';
 import styles from './MissingReportStyles';
 import useMissingReports from './useMissingReports';
 import GenderDropdown from '../../components/ui/dropdown/Dropdown';
-import { allItems } from '../../constants/contents';
+import { allItems } from '../../constants/constants';
 import {
   TopBar,
   TextInputs,
@@ -31,7 +31,6 @@ const MissingReport = () => {
     dropdownOpen,
   } = useMissingReports();
   const {itemsTop, itemsBelow} = allItems();
-
   return (
     <ScrollView>
       <View style={styles.wrap}>

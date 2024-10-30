@@ -5,7 +5,7 @@ import {useAppDispatch, useAppSelector} from '../../../store/hooks';
 import {
   handleChangePassword,
   selectPassword,
-} from '../../../store/features/loginSlice';
+} from '../../../store/slices/login.slice';
 
 const PasswordInput = () => {
   const password = useAppSelector(selectPassword);

@@ -14,7 +14,7 @@ const ProfileFlow = () => {
   const {change, dataF} = useHandleFlow();
 
   return (
-    <View>
+    <View style={styles.full}>
       <View style={styles.headerWrap}>
         <TopBar text="All Missing Person" />
       </View>

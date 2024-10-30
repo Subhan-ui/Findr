@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import { scaleFont, wp } from '../../constants/contents';
+import { scaleFont, wp } from '../../constants/constants';
 
 const styles = StyleSheet.create({
   view: {
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Familjen Grotesk',
-    fontSize: scaleFont(64),
+    fontSize: scaleFont(60),
     fontWeight: '700',
   },
   small: {

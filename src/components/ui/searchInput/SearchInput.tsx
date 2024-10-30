@@ -6,7 +6,7 @@ import {useAppDispatch, useAppSelector} from '../../../store/hooks';
 import {
   handleChangeQuery,
   selectQuery,
-} from '../../../store/features/missingReportSlice';
+} from '../../../store/slices/missingReport.slice';
 
 const SearchInput = ({marginHorizontal}: {marginHorizontal: number}) => {
   const search = useAppSelector(selectQuery);

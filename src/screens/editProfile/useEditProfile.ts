@@ -13,7 +13,7 @@ import {
   handleUserNull,
   selectName,
   selectUser,
-} from '../../store/features/loginSlice';
+} from '../../store/slices/login.slice';
 
 const useEdit = () => {
   const dispatch = useAppDispatch();

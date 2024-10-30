@@ -1,10 +1,10 @@
 import {ToastAndroid} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
-import {handleReports, selectReports} from '../../store/features/reportSlice';
+import {handleReports, selectReports} from '../../store/slices/report.slice';
 import {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import {selectUser} from '../../store/features/loginSlice';
+import {selectUser} from '../../store/slices/login.slice';
 
 const useReports = () => {
   const user = useAppSelector(selectUser);

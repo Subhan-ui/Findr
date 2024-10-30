@@ -19,17 +19,18 @@ import {
   Button,
   GoogleButton,
 } from '../../components';
+import {login} from '../../constants/images';
 
 const Login = () => {
   const navigation = useTypeNavigation();
   const {onEmailSignIn, loading} = useLogin();
-
   return (
     <KeyboardAvoidingView
       style={styles.wrapper}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 20 : 0}>
       <ScrollView
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{flexGrow: 1}}
         bounces={false}
         keyboardShouldPersistTaps="handled">
@@ -66,9 +67,7 @@ const Login = () => {
           <GoogleButton />
         </View>
         <View style={styles.footer}>
-          <Image
-            source={require('../../constants/images/patterns/login.png')}
-          />
+          <Image source={login} />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

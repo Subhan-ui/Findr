@@ -5,7 +5,7 @@ import {
   handleChangeQuery,
   handleData,
   selectSearchData,
-} from '../../store/features/missingReportSlice';
+} from '../../store/slices/missingReport.slice';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 
 const useGetReports = () => {

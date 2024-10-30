@@ -4,7 +4,7 @@ import {useEffect} from 'react';
 import styles from './SpashScreenStyles';
 import useTypeNavigation from '../../navigation/useTypeNavigation';
 import {useAppSelector} from '../../store/hooks';
-import {selectUser} from '../../store/features/loginSlice';
+import {selectUser} from '../../store/slices/login.slice';
 import {Logo} from '../../components';
 
 const SpashScreen = () => {

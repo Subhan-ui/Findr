@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   filterItemText: {fontWeight: '500', fontSize: 14, color: 'black'},
   underline: {
-    marginTop: 20,
+    marginTop: 10,
     borderWidth: 0.5,
     borderColor: 'gray',
     width: '100%',

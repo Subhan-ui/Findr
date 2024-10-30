@@ -4,9 +4,8 @@ import Icon2 from 'react-native-vector-icons/AntDesign';
 import Icon3 from 'react-native-vector-icons/Entypo';
 import {Dimensions, PixelRatio} from 'react-native';
 
-import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import {navTypes} from '../../types/types';
-import {filterItemType} from '../../types/types';
+import {useAppDispatch, useAppSelector} from '../store/hooks';
+import {filterItemType, navTypes} from '../types/types';
 import {
   handleChange,
   selectDateOfBirth,
@@ -17,7 +16,7 @@ import {
   selectLocation,
   selectNickname,
   selectWeight,
-} from '../../store/features/missingReportSlice';
+} from '../store/slices/missingReport.slice';
 
 export const {width, height} = Dimensions.get('window');
 

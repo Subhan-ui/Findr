@@ -6,7 +6,7 @@ import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {
   selectDate,
   handleChangeDate,
-} from '../../store/features/missingReportSlice';
+} from '../../store/slices/missingReport.slice';
 import {modalType} from '../../types/types';
 
 const DateTimeModal = ({modalVisible, handleModal}: modalType) => {
@@ -22,7 +22,6 @@ const DateTimeModal = ({modalVisible, handleModal}: modalType) => {
         </Pressable>
       </View>
       <DatePicker
-          
         open={modalVisible}
         date={date}
         onConfirm={(selectedDate: Date) => {

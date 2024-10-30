@@ -2,14 +2,14 @@ import {View, Text, ScrollView} from 'react-native';
 
 import styles from './FilterStyles';
 import {changeFilter} from '../../types/types';
-import { items } from '../../constants/contents';
+import { items } from '../../constants/constants';
 
 const Filter = ({changeFilter}: changeFilter) => {
   return (
     <>
       <View style={styles.wrapperView}>
         <Text style={styles.filterText}>Filter By:</Text>
-        <ScrollView horizontal style={styles.row}>
+        <ScrollView horizontal style={styles.row} showsHorizontalScrollIndicator={false}>
           {items.map(item => (
             <View style={styles.filterItem}>
               <Text

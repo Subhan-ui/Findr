@@ -2,6 +2,7 @@ import {View, Pressable, Image} from 'react-native';
 
 import useLogin from '../../screens/login/useLogin';
 import styles from './GoogleButtonStyles';
+import { google } from '../../constants/images';
 
 const GoogleButton = () => {
   const {onGoogleButtonPress} = useLogin();
@@ -9,7 +10,7 @@ const GoogleButton = () => {
     <View style={styles.wrapperView}>
       <Pressable onPress={() => onGoogleButtonPress()} style={styles.imageView}>
         <Image
-          source={require('../../constants/images/images/Google.png')}
+          source={google}
           style={styles.image}
         />
       </Pressable>

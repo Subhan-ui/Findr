@@ -6,7 +6,7 @@ import {useAppDispatch, useAppSelector} from '../../../store/hooks';
 import {
   handleChangeEmail,
   selectEmail,
-} from '../../../store/features/loginSlice';
+} from '../../../store/slices/login.slice';
 
 const EmailButton = ({hide}: {hide?: boolean}) => {
   const email = useAppSelector(selectEmail);

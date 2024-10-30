@@ -17,11 +17,11 @@ import {
   selectLocation,
   selectNickname,
   selectWeight,
-} from '../../store/features/missingReportSlice';
+} from '../../store/slices/missingReport.slice';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {useState} from 'react';
 import useTypeNavigation from '../../navigation/useTypeNavigation';
-import {selectUser} from '../../store/features/loginSlice';
+import {selectUser} from '../../store/slices/login.slice';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 

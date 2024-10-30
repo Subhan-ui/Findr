@@ -10,7 +10,7 @@ import {
   handleChangeName,
   handleUser,
   selectUser,
-} from '../store/features/loginSlice';
+} from '../store/slices/login.slice';
 
 export const useNavigations = () => {
   const dispatch = useAppDispatch();

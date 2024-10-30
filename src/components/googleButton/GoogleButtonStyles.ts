@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 import { colors } from "../../constants/colors/colors";
-import { hp } from "../../constants/contents";
+import { hp } from "../../constants/constants";
 
 const styles = StyleSheet.create({
     wrapperView: {display: 'flex', alignItems: 'center', marginTop: hp(1)},

@@ -5,6 +5,7 @@ import useTypeNavigation from '../../navigation/useTypeNavigation';
 import useGetReports from './useHome';
 import {Logo, Card, Navbar, SearchInput} from '../../components';
 import {colors} from '../../constants/colors/colors';
+import { homeslider } from '../../constants/images';
 
 const Home = () => {
   const navigation = useTypeNavigation();
@@ -18,7 +19,7 @@ const Home = () => {
       <SearchInput marginHorizontal={45} />
       <View style={styles.imageWrap}>
         <Image
-          source={require('../../constants/images/images/homeSlider.png')}
+          source={homeslider}
         />
       </View>
       <View style={styles.barWrap}>

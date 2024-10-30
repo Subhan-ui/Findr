@@ -1,6 +1,8 @@
 import {StyleSheet} from 'react-native';
+import {height} from '../../constants/constants';
 
 const styles = StyleSheet.create({
+  full: {height: height},
   headerWrap: {
     display: 'flex',
     flexDirection: 'row',

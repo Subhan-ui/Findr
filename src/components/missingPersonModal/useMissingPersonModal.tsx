@@ -3,12 +3,12 @@ import firestore from '@react-native-firebase/firestore';
 import {useState} from 'react';
 
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import {selectUser} from '../../store/features/loginSlice';
+import {selectUser} from '../../store/slices/login.slice';
 import {
   handleChangeFound,
   selectDescription,
   selectLocation,
-} from '../../store/features/reportSlice';
+} from '../../store/slices/report.slice';
 
 const useContact = (
   photo: string,

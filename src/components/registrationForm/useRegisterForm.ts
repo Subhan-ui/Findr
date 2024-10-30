@@ -9,7 +9,7 @@ import {
   selectEmail,
   selectPassword,
   handleChangeName,
-} from '../../store/features/loginSlice';
+} from '../../store/slices/login.slice';
 
 const useRegister = () => {
   const navigation = useTypeNavigation();
@@ -24,14 +24,14 @@ const useRegister = () => {
   const password = useAppSelector(selectPassword);
   const onEmailSignUp = () => {
     setLoading(true);
-    if (email.length > 0 && password.length > 0 && name.length > 0) {
+    if (email?.length > 0 && password?.length > 0 && name?.length > 0) {
       auth()
-        .createUserWithEmailAndPassword(email, password)
+        ?.createUserWithEmailAndPassword(email, password)
         .then(() => {
           const updateName = {
             displayName: name,
           };
-          auth().currentUser?.updateProfile(updateName);
+          auth()?.currentUser?.updateProfile(updateName);
           ToastAndroid.show(
             'User account created & signed in!',
             ToastAndroid.LONG,
@@ -53,7 +53,7 @@ const useRegister = () => {
             );
           }
 
-          ToastAndroid.show(error.message, ToastAndroid.LONG);
+          ToastAndroid.show(error?.message, ToastAndroid.LONG);
         })
         .finally(() => {
           setLoading(false);

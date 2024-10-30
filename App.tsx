@@ -1,5 +1,5 @@
 import Navigator from './src/navigation/Navigator';
-import Provider from './src/store/StoreProvider';
+import Provider from './src/components/provider/Provider';
 
 const App = () => (
   <Provider>

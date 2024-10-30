@@ -1,7 +1,7 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import loginSlice from './features/loginSlice';
-import missingReportSlice from './features/missingReportSlice';
-import reportSlice from './features/reportSlice';
+import loginSlice from './slices/login.slice';
+import missingReportSlice from './slices/missingReport.slice';
+import reportSlice from './slices/report.slice';
 
 const rootReducer = combineReducers({
   login: loginSlice,

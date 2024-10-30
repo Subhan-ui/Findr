@@ -1,0 +1,9 @@
+// export const blank = './images/blank.png'
+export const blank = require('../../assets/images/blank.png');
+export const google = require('../../assets/images/Google.png');
+export const forgotPassword = require('../../assets/images/forgotPassword.png');
+export const homeSlider = require('../../assets/images/homeSlider.png');
+export const login = require('../../assets/images/login.png');
+export const register = require('../../assets/images/registration.png');
+export const path = require('../../assets/images/noProfile.png');
+export const homeslider = require('../../assets/images/homeSlider.png');

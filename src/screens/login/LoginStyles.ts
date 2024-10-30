@@ -1,10 +1,11 @@
 import {StyleSheet} from 'react-native';
 
 import {colors} from '../../constants/colors/colors';
-import {hp, wp, scaleFont} from '../../constants/contents';
+import {hp, wp, scaleFont, height} from '../../constants/constants';
 
 const styles = StyleSheet.create({
   wrapper: {
+    height: height,
     flex: 1,
     marginTop: hp(6),
     marginLeft: wp(8),
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   heading: {
     fontFamily: 'Familjen Grotesk',
     fontWeight: '700',
-    fontSize: scaleFont(48),
+    fontSize: scaleFont(42),
     color: 'black',
     marginTop: hp(2.5),
   },
@@ -57,6 +58,7 @@ const styles = StyleSheet.create({
     fontSize: scaleFont(16),
   },
   footer: {
+    display: height >= 750 ? 'flex' : 'none',
     position: 'absolute',
     bottom: 0,
     left: 0,
